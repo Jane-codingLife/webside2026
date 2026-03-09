@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap ch5.表格</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/20260302.css">
+    <style>
+        .bs-class-discrible {
+            margin-top: 15px;
+            margin-left: 20px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            background-color: var(--sky-ui-bg-C);
+            border-radius: 20px;
+            padding-left: 15px;
+            padding-bottom: 5px;
+            color: var(--sky-ui-text-C);
+        }
+        .bs-class-discrible p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="display-2 text-center">Bootstrap ch5. 表格</div>
+        
+        <div class="bs-class-discrible">
+            <p>table 的 class：</p>
+            <p>(1) table: 自動漂亮表格</p>
+            <p>(2) table-bordered: 表格所有框線</p>
+            <p>(3) table-striped: 單偶列不同色區隔</p>
+            <p>(4) table-hover: 滑鼠碰到變色，通常不與 striped 共用</p>
+            <p>(5) table-sm: 內距 padding 縮小</p>
+        </div>
+
+        <table class="table table-bordered table-hover table-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>編號</th>
+                    <th>品名</th>
+                    <th>價格</th>
+                    <th>數量</th>
+                    <th>備註</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>紅茶拿鐵</td>
+                    <td>50</td>
+                    <td>2</td>
+                    <td>微糖去冰</td>
+                </tr>
+                <tr class="table-primary">
+                    <td class="bg-primary">002</td>
+                    <td>紅茶拿鐵</td>
+                    <td>50</td>
+                    <td>2</td>
+                    <td>微糖溫</td>
+                </tr>
+                <tr class="table-secondary">
+                    <td class="bg-secondary">003</td>
+                    <td>紅茶拿鐵</td>
+                    <td>50</td>
+                    <td>5</td>
+                    <td>半糖去冰</td>
+                </tr>
+                <tr class="table-success">
+                    <td class="bg-success">004</td>
+                    <td>紅茶拿鐵</td>
+                    <td>50</td>
+                    <td>5</td>
+                    <td>半糖去冰</td>
+                </tr>
+                <tr class="table-danger">
+                    <td class="bg-danger">005</td>
+                    <td>紅茶拿鐵</td>
+                    <td>50</td>
+                    <td>5</td>
+                    <td>半糖去冰</td>
+                </tr>
+                <tr class="table-warning">
+                    <td class="bg-warning">006</td>
+                    <td>紅茶拿鐵</td>
+                    <td>50</td>
+                    <td>5</td>
+                    <td>半糖去冰</td>
+                </tr>
+                <tr class="table-info">
+                    <td class="bg-info">007</td>
+                    <td>紅茶拿鐵</td>
+                    <td>50</td>
+                    <td>5</td>
+                    <td>半糖去冰</td>
+                </tr>
+                <tr class="table-light">
+                    <td class="bg-light">008</td>
+                    <td>紅茶拿鐵</td>
+                    <td>50</td>
+                    <td>5</td>
+                    <td>半糖去冰</td>
+                </tr>
+                <tr class="table-active">
+                    <td class="bg-dark">009</td>
+                    <td>紅茶拿鐵</td>
+                    <td>50</td>
+                    <td>5</td>
+                    <td>半糖去冰</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="bs-class-discrible">
+            <p>Bootstrap 內建色卡：</p>
+            <p>== 較淡的 table 系列 ==</p>
+            <p>(01) table-primary: 淡藍</p>
+            <p>(02) table-secondary: 淡灰</p>
+            <p>(03) table-success: 淡綠</p>
+            <p>(04) table-danger: 淡紅</p>
+            <p>(05) table-warning: 淡澄</p>
+            <p>(06) table-info: 淡青</p>
+            <p>(07) table-light: 亮灰</p>
+            <p>(08) table-dark: 黑底白字</p>
+            <p>(09) table-active: 深一點的淡灰</p>
+            <hr>
+            <p>== 較深的 bg 系列 ==</p>
+            <p>(10) bg-primary: 深藍</p>
+            <p>(11) bg-secondary: 深灰</p>
+            <p>(12) bg-success: 深綠</p>
+            <p>(13) bg-danger: 深紅</p>
+            <p>(14) bg-warning: 深橘</p>
+            <p>(15) bg-info: 深青</p>
+            <p>(16) bg-light: 深灰白</p>
+            <p>(16) bg-dark: 深黑</p>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

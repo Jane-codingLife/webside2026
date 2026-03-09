@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap ch3.文字 and ch4.圖片</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/20260302.css">
+    <style>
+        body {
+            background-color: var(--sky-blue03);
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        h1 a {
+            text-decoration: none;
+            color: var(--sky-pink01);
+            font-weight: 900;
+        }
+
+        .list-title {
+            margin-top: 20px;
+            font-weight: 900;
+        }
+
+        .box-title {
+            margin-top: 15px;
+            margin-left: 20px;
+            font-weight: 700;
+            background-color: var(--sky-ui-bg-C);
+            border-radius: 20px;
+            padding-left: 15px;
+            padding-bottom: 4px;
+            color: var(--sky-ui-text-C);
+        }
+
+        .box01 {
+            border: 2px solid;
+            border-radius: 10px;
+            padding: 15px;
+            margin-left: 40px;
+            box-shadow: 2px 3px 6px 2px var(--sky-blue01);
+            background-color: var(--sky-pink03b);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Bootstrap <a href="#_ch3word">ch3. 文字相關</a> 與 <a href="#_ch4image">ch4. 圖片相關</a></h1>
+
+        <br>
+        <h1 id="_ch3word">ch3. 文字相關</h1>
+
+        <h2 class="list-title">1. 字型大小</h2>
+        <h2 class="box-title">h1 ~ h5</h2>
+        <div class="box01">
+            <h1>她們開心不良，拍攝。</h1>
+            <h2>她們開心不良，拍攝。</h2>
+            <h3>她們開心不良，拍攝。</h3>
+            <h4>她們開心不良，拍攝。</h4>
+            <h5>她們開心不良，拍攝。</h5>
+        </div>
+
+        <h2 class="box-title">class="h1" ~ "h5"</h2>
+        <div class="box01">
+            <div class="h1">她們開心不良，拍攝。</div>
+            <div class="h2">她們開心不良，拍攝。</div>
+            <div class="h3">她們開心不良，拍攝。</div>
+            <div class="h4">她們開心不良，拍攝。</div>
+            <div class="h5">她們開心不良，拍攝。</div>
+        </div>
+
+        <h2 class="list-title">2. 標題</h2>
+        <h2 class="box-title">class="display-1" ~ "display-6"</h2>
+        <div class="box01">
+            <div class="display-1">這是一個大標題。</div>
+            <div class="display-2">這是一個大標題。</div>
+            <div class="display-3">這是一個大標題。</div>
+            <div class="display-4">這是一個大標題。</div>
+            <div class="display-5">這是一個大標題。</div>
+            <div class="display-6">這是一個大標題。</div>
+        </div>
+
+        <h2 class="list-title">3. 文本元素</h2>
+        <h2 class="box-title">mark, del / s, ins / u, small, strong, em</h2>
+        <div class="box01">
+            <p>Lorem ipsum dolor sit amet <mark>consectetur</mark>.</p>
+            <p><del>Lorem ipsum dolor sit amet consectetur.</del></p>
+            <p>Lorem <s>ipsum dolor sit</s> amet consectetur.</p>
+            <p>Lorem ipsum dolor <ins>sit amet consectetur</ins>.</p>
+            <p><u>Lorem ipsum dolor sit amet consectetur.</u></p>
+            <p><small>Lorem ipsum dolor sit amet consectetur.</small></p>
+            <p><strong>Lorem ipsum dolor sit amet consectetur.</strong></p>
+            <p><em>Lorem ipsum dolor sit amet consectetur.</em></p>
+        </div>
+
+        <h2 class="list-title">4. 文字對齊:靠左, 置中, 靠右</h2>
+        <h2 class="box-title">class="text-start", "text-center", "text-end"</h2>
+        <div class="box01">
+            <p class="text-start">主管尚未隨意，平時。</p>
+            <p class="text-center">主管尚未隨意，平時。</p>
+            <p class="text-end">主管尚未隨意，平時。</p>
+        </div>
+
+        <h2 class="list-title">5. 消除項目符號</h2>
+        <h2 class="box-title">class="list-unstyled"</h2>
+        <div class="box01">
+            <ul class="list-unstyled">
+                <li>項目選單01</li>
+                <li>項目選單02
+                    <ul>
+                        <li>項目選單03-1</li>
+                        <li>項目選單03-2</li>
+                        <li>項目選單03-3</li>
+                    </ul>
+                </li>
+                <li>項目選單03</li>
+                <li>項目選單04</li>
+                <li>項目選單05</li>
+            </ul>
+        </div>
+
+        <h2 class="list-title">6. 選單橫向排列</h2>
+        <h2 class="box-title">
+            ul, li 都要設定 class 分別如下: <br>
+            <ul style="list-style-type: square;">
+                <li>ul 給 class="list-inline",</li>
+                <li>li 給 class="list-inline-item"</li>
+            </ul>
+        </h2>
+        <div class="box01">
+            <ul class="list-inline">
+                <li class="list-inline-item">選單01</li>
+                <li class="list-inline-item">選單02</li>
+                <li class="list-inline-item">選單03</li>
+                <li class="list-inline-item">選單04</li>
+            </ul>
+        </div>
+
+        <h2 class="list-title">7. 多行文字收納成單行...</h2>
+        <h2 class="box-title">class="text-truncate"</h2>
+        <div class="box01">
+            <p class="text-truncate">告訴你曝光企業加盟升級培訓擔心聯絡人保持奇怪，這就是股東登陸抽菸區提出，世界上你看突出鐵路休息記憶堅持西部你就我只一遍，一台失敗能夠前進全部，半年影音春天農民實驗有關部門整合。</p>
+        </div>
+
+        <h2 class="list-title">8. 文繞圖</h2>
+        <h2 class="box-title">圖靠右: class="float-start"</h2>
+        <div class="box01">
+            <img src="img/Animals_001.avif" width="200px" alt="" class="float-start">
+            <p>你自己常用和平利益綠色把他站點日前，戰鬥雲林帶著不住不可軍隊背後維持整體改造我家你在有人信箱是指，好好新手可是某些發展宣傳太麻里即將貼圖今年，動作文字當你以前建議優質，關鍵人數而且大陸力道單位素質工程一臉各級巨大不詳，站內快樂結束現象進步至少大多良好評論第三，協助順利寫出來恐怖能否相信進一步公佈最重要商標瞬間，感情建設你們是一種出租負責觀看最後，正確魔獸清除，證書大門，只需神話監管最多，效益電視。</p>
+        </div>
+        <h2 class="box-title">圖靠左: class="float-end"</h2>
+        <div class="box01">
+            <img src="img/Animals_001.avif" width="200px" alt="" class="float-end">
+            <p>你自己常用和平利益綠色把他站點日前，戰鬥雲林帶著不住不可軍隊背後維持整體改造我家你在有人信箱是指，好好新手可是某些發展宣傳太麻里即將貼圖今年，動作文字當你以前建議優質，關鍵人數而且大陸力道單位素質工程一臉各級巨大不詳，站內快樂結束現象進步至少大多良好評論第三，協助順利寫出來恐怖能否相信進一步公佈最重要商標瞬間，感情建設你們是一種出租負責觀看最後，正確魔獸清除，證書大門，只需神話監管最多，效益電視。</p>
+        </div>
+
+        <br>
+        <br>
+        <h1 id="_ch4image">ch4. 圖片相關</h1>
+
+        <h2 class="list-title">9. 圖片填滿至最大</h2>
+        <h2 class="box-title">width="100%" 不斷放大會失真</h2>
+        <div class="box01">
+            <img src="img/Animals_001-1.png" width="100%" alt="">
+        </div>
+        <h2 class="box-title">class="img-fluid" 放大到圖片最大值</h2>
+        <div class="box01">
+            <img src="img/Animals_001-1.png" class="img-fluid" alt="">
+        </div>
+
+        <h2 class="list-title">10. 圖框</h2>
+        <h2 class="box-title">
+            class="img-thumbnail" <br>
+            通常與 img-fluid 一起使用 => <br>
+            class="img-fluid img-thumbnail"
+        </h2>
+        <div class="box01">
+            <img src="img/Animals_001-1.png" class="img-fluid img-thumbnail" alt="">
+        </div>
+
+        <h2 class="list-title">11. 圖片置中</h2>
+        <h2 class="box-title">
+            class="d-block mx-auto" <br>
+            display: block; mx: 水平軸自動
+        </h2>
+        <div class="box01">
+            <img src="img/Animals_002-1.png" alt="" class="d-block mx-auto">
+        </div>
+
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
