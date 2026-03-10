@@ -57,7 +57,7 @@
             width: 30vh;
             height: 30vh;
             border-radius: 15vh;
-            left: 15vh;
+            left: 10%;
             top: 5vh;
             box-shadow: 1px 2px 4px 6px var(--sky-blue01);
         }
@@ -65,8 +65,8 @@
         .text-info {
             position: absolute;
             top: 10vh;
-            left: 63vh;
-            right: 25vh;
+            left: 45%;
+            right: 20%;
         }
 
         .text-info h1 {
@@ -123,6 +123,75 @@
         .footer p {
             padding: 5px;
         }
+
+        @media screen and (max-width: 990px) {
+            .logo .box4 {
+                top: 10%;
+                left: 25%;
+            }
+
+            .text-info {
+                position: static;
+                margin: 20px auto;
+                text-align: center;
+            }
+
+            .text-info h1 {
+                color: var(--sky-blue01);
+            }
+
+            .text-info hr {
+                border-color: var(--sky-blue01);
+            }
+
+            .text-info h3 {
+                color: var(--sky-blue01b);
+            }
+
+            .text-info p {
+                padding-left: 0;
+                color: var(--sky-blue02);
+                margin-bottom: 0;
+            }
+
+            .text-info a {
+                background-color: var(--sky-blue03);
+                line-height: 4rem;
+                padding: 5px 10px;
+                border-radius: 30px;
+                box-shadow: 1px 2px 4px 2px var(--sky-blue01);
+            }
+
+            .media-title {
+                font-size: 35px;
+            }
+
+            .list-inline {
+                display: block;
+            }
+
+            .list-inline-item {
+                display: block;
+            }
+
+            .works a {
+                padding: 10px;
+                font-size: 25px;
+                border-radius: 0;
+                margin-top: 5px;
+                box-shadow: none;
+                border-top-right-radius: 30px;
+                border-bottom-right-radius: 30px;
+            }
+
+            .works a:hover {
+                transform: none;
+            }
+
+            .footer p {
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 
@@ -140,11 +209,12 @@
                 <hr>
                 <h3>全端工程師</h3>
                 <p>智慧生成全端程式與跨平台APP整合實務班</p>
-                <a href="https://www.youtube.com/playlist?list=PLQVqYxp39S6sPlbOYYFxw7KHjO25onmkT" class="text-decoration-none text-danger" target="_blank">YouTube 課堂影片</a>
+                <a href="https://www.youtube.com/playlist?list=PLQVqYxp39S6sPlbOYYFxw7KHjO25onmkT"
+                    class="text-decoration-none text-danger" target="_blank">YouTube 課堂影片</a>
             </div>
         </div>
 
-        <div class="display-4 text-center p-4">=== 課堂作品一欄表 ===</div>
+        <div class="display-4 text-center p-4 media-title">=== 課堂作品一欄表 ===</div>
 
         <div class="works">
             <ul class="list-unstyled list-inline">
