@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap ch5.表格</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/20260302.css">
+
+    <style>
+        .img-box {
+            width: 250px;
+            height: 200px;
+            object-fit: cover;
+            /* 🌟 核心靈魂：保持比例填滿，超出自動隱藏，絕不變形 */
+            object-position: center;
+            /* (選填) 確保裁切時以圖片正中央為主 */
+        }
+
+        .img-box img {
+            width: 100%;
+            height: auto;
+        }
+
+        @media screen and (max-width: 990px) {
+            .table-rwd thead {
+                display: none;
+            }
+
+            .table-rwd tbody tr {
+                display: block;
+                margin-top: 20px;
+                border-radius: 10px;
+                border: 3px solid var(--sky-pink05);
+                box-shadow: 2px 2px 2px 2px var(--sky-ui-bg-A);
+            }
+
+            .table-rwd tbody tr td {
+                display: block;
+                font-size: 20px;
+                overflow: hidden;
+            }
+
+            .table-rwd tbody tr td::before {
+                content: attr(data-th) " : ";
+                font-size: 20px;
+                font-weight: 900;
+                color: var(--sky-pink05);
+                display: block;
+                float: left;
+                width: 25%;
+                text-align: right;
+                padding-right: 5px;
+            }
+
+            .table-rwd tbody tr td span {
+                display: block;
+                float: left;
+                width: 75%;
+            }
+            
+            .img-box {
+                width: 50px;
+                height: 200px;
+            }
+
+            .img-box img {
+                border-radius: 50%;
+                width: 155px;
+                height: auto;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="display-4 text-center">RWD Table</div>
+
+        <table class="table table-bordered table-rwd">
+            <thead class="table-dark">
+                <tr>
+                    <th width="9%">員工編號</th>
+                    <th width="9%">員工姓名</th>
+                    <th width="31%">員工圖片</th>
+                    <th width="10%">員工部門</th>
+                    <th width="11%">員工職位</th>
+                    <th width="30%">員工簡述</th>
+                </tr>
+            </thead>
+            <tbody id="employeelist">
+                <!-- <tr>
+                    <td data-th="員工編號"><span>E001</span></td>
+                    <td data-th="員工姓名"><span>王大明</span></td>
+                    <td data-th="員工圖片"><span>
+                            <img src="img/Animals_001-1.png" class="img-fluid" alt="">
+                        </span></td>
+                    <td data-th="員工部門"><span>資訊部</span></td>
+                    <td data-th="員工職位"><span>軟體工程師</span></td>
+                    <td data-th="員工簡述"><span>專精於後端開發與系統架構設計。實驗本地下載玄幻富岡，利用擁有暴力網頁課程接近女孩子，受傷人體建立聲明巨大顯然提出容易相當，開口什。</span>
+                    </td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-4.0.0.js"></script>
+    <script>
+        $(function () {
+            console.log("Hello World!");
+
+            // 迴圈
+            // for(let i=1; i<10; i++){
+            //     console.log(i + " 的乘法表: Nice to meet you!");
+            //     for(let j=1; j<10; j++){
+            //         console.log(i + " x " + j + " = " + (i*j));
+            //     };
+            // };
+
+            // console.log("===========================");
+
+            let userData = {
+                "company": "未來科技股份有限公司",
+                "employees": [
+                    { "id": "E001", "name": "王志豪", "photo": "img/person_", "department": "資訊部", "position": "系統工程師", "description": "負責公司內部系統維護與伺服器管理" },
+                    { "id": "E002", "name": "林雅婷", "photo": "img/person_", "department": "行銷部", "position": "行銷專員", "description": "負責社群媒體經營與品牌推廣活動" },
+                    { "id": "E003", "name": "陳柏宇", "photo": "img/person_", "department": "業務部", "position": "業務代表", "description": "負責客戶開發與產品銷售業務" },
+                    { "id": "E004", "name": "張家瑜", "photo": "img/person_", "department": "人資部", "position": "人資專員", "description": "負責招募面試與員工訓練規劃" },
+                    { "id": "E005", "name": "黃俊傑", "photo": "img/person_", "department": "財務部", "position": "會計專員", "description": "負責公司帳務處理與財務報表整理" },
+                    { "id": "E006", "name": "李佳穎", "photo": "img/person_", "department": "資訊部", "position": "前端工程師", "description": "負責公司網站前端開發與UI介面優化" },
+                    { "id": "E007", "name": "吳承翰", "photo": "img/person_", "department": "資訊部", "position": "後端工程師", "description": "負責API設計與資料庫系統開發" },
+                    { "id": "E008", "name": "蔡佩珊", "photo": "img/person_", "department": "行銷部", "position": "活動企劃", "description": "規劃線上與線下品牌活動與宣傳" },
+                    { "id": "E009", "name": "劉冠廷", "photo": "img/person_", "department": "業務部", "position": "業務主任", "description": "帶領業務團隊拓展企業客戶市場" },
+                    { "id": "E010", "name": "楊舒涵", "photo": "img/person_", "department": "人資部", "position": "招募專員", "description": "負責公司人才招募與面試安排" },
+                    { "id": "E011", "name": "許家豪", "photo": "img/person_", "department": "資訊部", "position": "DevOps工程師", "description": "維護CI/CD流程與雲端部署環境" },
+                    { "id": "E012", "name": "郭怡君", "photo": "img/person_", "department": "財務部", "position": "財務分析師", "description": "負責財務數據分析與營運報告" },
+                    { "id": "E013", "name": "邱建宏", "photo": "img/person_", "department": "業務部", "position": "資深業務", "description": "維護重要客戶關係並開拓新市場" },
+                    { "id": "E014", "name": "賴品妤", "photo": "img/person_", "department": "行銷部", "position": "品牌專員", "description": "負責品牌形象規劃與市場策略" },
+                    { "id": "E015", "name": "蘇柏霖", "photo": "img/person_", "department": "資訊部", "position": "資料工程師", "description": "設計與維護公司資料處理流程" },
+                    { "id": "E016", "name": "謝宜庭", "photo": "img/person_", "department": "人資部", "position": "教育訓練專員", "description": "規劃員工培訓與內部課程" },
+                    { "id": "E017", "name": "鄭凱文", "photo": "img/person_", "department": "資訊部", "position": "資安工程師", "description": "負責公司資安監控與漏洞防護" },
+                    { "id": "E018", "name": "周雅玲", "photo": "img/person_", "department": "財務部", "position": "會計主管", "description": "負責公司財務管理與會計制度" },
+                    { "id": "E019", "name": "曾俊傑", "photo": "img/person_", "department": "業務部", "position": "客戶經理", "description": "管理重要客戶並制定銷售策略" },
+                    { "id": "E020", "name": "潘怡安", "photo": "img/person_", "department": "行銷部", "position": "內容行銷", "description": "負責撰寫品牌內容與社群文章" },
+                    { "id": "E021", "name": "洪士軒", "photo": "img/person_", "department": "資訊部", "position": "AI工程師", "description": "開發AI模型並優化資料分析系統" },
+                    { "id": "E022", "name": "呂佳欣", "photo": "img/person_", "department": "人資部", "position": "薪資專員", "description": "負責員工薪資與福利制度管理" },
+                    { "id": "E023", "name": "沈柏安", "photo": "img/person_", "department": "業務部", "position": "業務專員", "description": "負責產品銷售與市場開發" },
+                    { "id": "E024", "name": "杜怡萱", "photo": "img/person_", "department": "行銷部", "position": "社群經理", "description": "管理品牌社群與數位廣告投放" },
+                    { "id": "E025", "name": "高志明", "photo": "img/person_", "department": "資訊部", "position": "系統架構師", "description": "設計大型系統架構與技術規劃" },
+                    { "id": "E026", "name": "簡佩琪", "photo": "img/person_", "department": "財務部", "position": "出納專員", "description": "負責公司資金收支與銀行往來" },
+                    { "id": "E027", "name": "唐子豪", "photo": "img/person_", "department": "業務部", "position": "區域業務", "description": "負責區域市場客戶開發" },
+                    { "id": "E028", "name": "羅欣怡", "photo": "img/person_", "department": "行銷部", "position": "廣告企劃", "description": "負責廣告投放策略與活動規劃" },
+                    { "id": "E029", "name": "廖志成", "photo": "img/person_", "department": "資訊部", "position": "資料庫管理師", "description": "維護資料庫系統與資料安全" },
+                    { "id": "E030", "name": "何佳蓉", "photo": "img/person_", "department": "人資部", "position": "人資主管", "description": "負責人力資源制度與組織發展" }
+                ]
+            };
+
+            console.log(userData);
+
+            let employees = userData.employees.length
+            for (let i = 0; i < employees; i++) {
+                let employeeId = userData.employees[i].id;
+                let employeeName = userData.employees[i].name;
+                let employeeImg = userData.employees[i].photo + (i+1).toString().padStart(3, "0") + ".avif";
+                let employeeDep = userData.employees[i].department;
+                let employeePos = userData.employees[i].position;
+                let employeeDes = userData.employees[i].description;
+                let strHTML = `
+                <tr>
+                    <td data-th="員工編號"><span>${employeeId}</span></td>
+                    <td data-th="員工姓名"><span>${employeeName}</span></td>
+                    <td data-th="員工圖片"><span class="img-box">
+                            <img src="${employeeImg}" class="img-fluid" alt="">
+                        </span></td>
+                    <td data-th="員工部門"><span>${employeeDep}</span></td>
+                    <td data-th="員工職位"><span>${employeePos}</span></td>
+                    <td data-th="員工簡述"><span>${employeeDes}</span>
+                    </td>
+                </tr>`;
+                $("#employeelist").append(strHTML);
+            };
+
+        });
+    </script>
+</body>
+
+</html>

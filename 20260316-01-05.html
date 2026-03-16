@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap ch5.表格</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/20260302.css">
+
+    <style>
+        .img-box {
+            width: 250px;
+            height: 200px;
+            object-fit: cover;
+            /* 🌟 核心靈魂：保持比例填滿，超出自動隱藏，絕不變形 */
+            object-position: center;
+            /* (選填) 確保裁切時以圖片正中央為主 */
+        }
+
+        .img-box img {
+            width: 100%;
+            height: auto;
+        }
+
+        @media screen and (max-width: 990px) {
+            .table-rwd thead {
+                display: none;
+            }
+
+            .table-rwd tbody tr {
+                display: block;
+                margin-top: 20px;
+                border-radius: 10px;
+                border: 3px solid var(--sky-pink05);
+                box-shadow: 2px 2px 2px 2px var(--sky-ui-bg-A);
+            }
+
+            .table-rwd tbody tr td {
+                display: block;
+                font-size: 20px;
+                overflow: hidden;
+            }
+
+            .table-rwd tbody tr td::before {
+                content: attr(data-th) " : ";
+                font-size: 20px;
+                font-weight: 900;
+                color: var(--sky-pink05);
+                display: block;
+                float: left;
+                width: 25%;
+                text-align: right;
+                padding-right: 5px;
+            }
+
+            .table-rwd tbody tr td span {
+                display: block;
+                float: left;
+                width: 75%;
+            }
+            
+            .img-box {
+                width: 50px;
+                height: 100px;
+            }
+
+            .img-box img {
+                border-radius: 50%;
+                width: 155px;
+                height: auto;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="display-4 text-center">RWD Table</div>
+
+        <table class="table table-bordered table-rwd">
+            <thead class="table-dark">
+                <tr>
+                    <th width="9%">員工編號</th>
+                    <th width="9%">員工姓名</th>
+                    <th width="31%">員工圖片</th>
+                    <th width="10%">員工部門</th>
+                    <th width="11%">員工職位</th>
+                    <th width="30%">員工簡述</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-th="員工編號"><span>E001</span></td>
+                    <td data-th="員工姓名"><span>王大明</span></td>
+                    <td data-th="員工圖片"><span class="img-box">
+                            <img src="img/Animals_001-1.png" class="img-fluid img-box" alt="">
+                        </span></td>
+                    <td data-th="員工部門"><span>資訊部</span></td>
+                    <td data-th="員工職位"><span>軟體工程師</span></td>
+                    <td data-th="員工簡述"><span>專精於後端開發與系統架構設計。實驗本地下載玄幻富岡，利用擁有暴力網頁課程接近女孩子，受傷人體建立聲明巨大顯然提出容易相當，開口什。</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
