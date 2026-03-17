@@ -18,7 +18,9 @@ body {
   --sky-blue05: #a9e4d7; /* 薄荷青 */
   --sky-blue06: #4ec9df; /* 電光藍 */
   --sky-blue07: #63a1d0; /* 晴空藍 */
+  --sky-blue07b: rgba(99, 161, 208, 0.4);
   --sky-blue08: #3576a7; /* 湛藍 */
+  --sky-blue08b: rgba(53, 118, 167, 0.5);
   --sky-blue09: #344986; /* 深海藍 */
   --sky-blue09b: rgba(52, 72, 134, 0.5);
   --sky-blue09c: rgba(52, 72, 134, 0.9);
