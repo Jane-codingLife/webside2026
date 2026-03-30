@@ -5,59 +5,115 @@
 /* font-family: "Klee One", cursive; */
 
 body {
-     font-family: "Klee One", cursive, "Noto Serif TC", serif;
+  font-family: "Klee One", cursive, "Noto Serif TC", serif;
 }
 
 :root {
+  /* 主要品牌色 - 深藍色 (Header/Footer/標題) */
+  --brand-primary01: #1d3557;
+  --brand-primary01b: #1d3557ce;
+  --brand-primary02: #0c1e36;
+  --brand-primary03: #4589e2;
+
+  /* 強調色 - 活力橘 (預約試聽按鈕) */
+  --brand-accent01: #ff8c00;
+  --brand-accent02: #ffa500;
+  --brand-accent03: #ff5e00;
+  /* 懸停效果建議色 */
+
+  /* 背景與輔助色 */
+  --brand-bg01: #e9f1f7;
+  /* 榜單項目的淡藍色背景 */
+  --brand-bg02: #1265a5;
+  --neutral-bg01: #e1eaf3;
+  /* 頁面次要背景灰 */
+  --neutral-bg02: #f0f0f0;
+  --neutral-white01: #ffffff;
+  /* 純白色卡片背景 */
+
+  /* 文字與邊框 */
+  --text-dark01: #333333;
+  /* 主要內文深灰色 */
+  --text-light01: #ffffff;
+  /* 標籤/按鈕上的白色文字 */
+  --border-light01: #e0e0e0;
+  /* 師資介紹卡片的邊框色 */
+
   /* --- Blue 系列 (藍青、冷色、基底色) --- */
-  --sky-blue01: #456268; /* 深青灰 */
+  --sky-blue01: #456268;
+  /* 深青灰 */
   --sky-blue01b: rgba(69, 98, 104, 0.8);
-  --sky-blue02: #79a3b1; /* 霧藍 */
-  --sky-blue03: #d0e8f2; /* 淺藍 */
-  --sky-blue04: #63b4b8; /* 湖綠 */
-  --sky-blue05: #a9e4d7; /* 薄荷青 */
-  --sky-blue06: #4ec9df; /* 電光藍 */
-  --sky-blue07: #63a1d0; /* 晴空藍 */
+  --sky-blue02: #79a3b1;
+  /* 霧藍 */
+  --sky-blue03: #d0e8f2;
+  /* 淺藍 */
+  --sky-blue04: #63b4b8;
+  /* 湖綠 */
+  --sky-blue05: #a9e4d7;
+  /* 薄荷青 */
+  --sky-blue06: #4ec9df;
+  /* 電光藍 */
+  --sky-blue07: #63a1d0;
+  /* 晴空藍 */
   --sky-blue07b: rgba(99, 161, 208, 0.4);
-  --sky-blue08: #3576a7; /* 湛藍 */
+  --sky-blue08: #3576a7;
+  /* 湛藍 */
   --sky-blue08b: rgba(53, 118, 167, 0.5);
-  --sky-blue09: #344986; /* 深海藍 */
+  --sky-blue09: #344986;
+  /* 深海藍 */
   --sky-blue09b: rgba(52, 72, 134, 0.5);
   --sky-blue09c: rgba(52, 72, 134, 0.9);
-  --sky-blue10: #fcf8ec; /* 雲朵白 (偏米色系，放在藍調作對比) */
+  --sky-blue10: #fcf8ec;
+  /* 雲朵白 (偏米色系，放在藍調作對比) */
 
   /* --- Deep 系列 (深紫、暮色) --- */
-  --sky-deep01: #4b3869; /* midnight 紫 */
+  --sky-deep01: #4b3869;
+  /* midnight 紫 */
   --sky-deep01b: rgba(75, 56, 105, 0.85);
-  --sky-deep02: #664e88; /* 暮色紫 */
+  --sky-deep02: #664e88;
+  /* 暮色紫 */
 
   /* --- Pink 系列 (粉紫、晚霞、暖調) --- */
-  --sky-pink01: #a594f9; /* 薰衣草 */
-  --sky-pink02: #cdc1ff; /* 柔紫 */
-  --sky-pink03: #f5efff; /* 極淡紫 */
-  --sky-pink03b: rgba(245, 239, 255, 0.63); /* 極淡紫 */
-  --sky-pink04: #e5d9f2; /* 晚霞淡紫 */
-  --sky-pink05: #863a6f; /* 深粉紫 */
-  --sky-pink06: #975c8d; /* 梅紫 */
+  --sky-pink01: #a594f9;
+  /* 薰衣草 */
+  --sky-pink02: #cdc1ff;
+  /* 柔紫 */
+  --sky-pink03: #f5efff;
+  /* 極淡紫 */
+  --sky-pink03b: rgba(245, 239, 255, 0.63);
+  /* 極淡紫 */
+  --sky-pink04: #e5d9f2;
+  /* 晚霞淡紫 */
+  --sky-pink05: #863a6f;
+  --sky-pink09: #d42c2c;
+  /* 深粉紫 */
+  --sky-pink06: #975c8d;
+  /* 梅紫 */
   --sky-pink06a: rgba(151, 92, 141, 0.5);
-  --sky-pink07: #d989b5; /* 糖果粉 */
-  --sky-pink08: #ffadbc; /* 蜜桃粉 */
+  --sky-pink07: #d989b5;
+  /* 糖果粉 */
+  --sky-pink08: #ffadbc;
+  --sky-pink08b: #ff8faba4;
+  /* 蜜桃粉 */
 
   /* --- A組：深夜沉靜 (Midnight) --- */
   /* 使用 --sky-deep01 作為基底 (75, 56, 105) */
-  --sky-ui-bg-A: rgba(75, 56, 105, 0.4); 
-  --sky-ui-bg-B: rgba(75, 56, 105, 0.9); 
-  --sky-ui-text-A: var(--sky-blue10); /* #fcf8ec */
+  --sky-ui-bg-A: rgba(75, 56, 105, 0.4);
+  --sky-ui-bg-B: rgba(75, 56, 105, 0.9);
+  --sky-ui-text-A: var(--sky-blue10);
+  /* #fcf8ec */
 
   /* --- B組：清晨迷霧 (Morning) --- */
   /* 使用 --sky-blue10 作為基底 (252, 248, 236) */
   --sky-ui-bg-B: rgba(252, 248, 236, 0.75);
-  --sky-ui-text-B: var(--sky-blue09); /* #344986 */
+  --sky-ui-text-B: var(--sky-blue09);
+  /* #344986 */
 
   /* --- C組：夢幻晚霞 (Sunset) --- */
   /* 使用 --sky-pink05 作為基底 (134, 58, 111) */
   --sky-ui-bg-C: rgba(134, 58, 111, 0.7);
-  --sky-ui-text-C: var(--sky-pink03); /* #f5efff */
+  --sky-ui-text-C: var(--sky-pink03);
+  /* #f5efff */
 
   /* 通用磨砂玻璃效果 (可選) */
   --sky-glass-blur: blur(10px);
