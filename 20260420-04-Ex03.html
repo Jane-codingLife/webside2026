@@ -1,0 +1,92 @@
+<!-- 利用AI
+請用我目前已學過的 Bootstrap 切版技術，幫我設計一個更貼近實務的商業首頁版面。
+
+需求：
+- 主題是＿＿＿＿（請自行替換）
+- 只能使用 container-fluid、row、col、d-flex、vh-100、h-50、背景圖、roller 效果
+- 可以微調語法，但不要加入太多新技術
+- 版面要像真實品牌官網首頁，不要像練習作業或圖片拼貼
+- 必須有主視覺、促銷區、分類入口、主打商品或服務、CTA 區
+- 文案要像真的商業網站，不要太空泛
+- 請直接給我完整 HTML
+- 最後補充這個版面的商業邏輯與教學重點 
+-->
+
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch08 練習03</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myCssTools.css">
+    <style>
+        .txt-box {
+            color: white;
+            font-weight: 900;
+            font-size: 30px;
+        }
+    </style>
+</head>
+    
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 bg-cover roller-box-left" style="background-image: url(img/Party_003.avif); height: 200px;">
+                <div class="txt-box roller">夢幻派對場景布置</div>
+            </div>
+            <div class="col-md-4 bg-cover roller-box-top" style="background-image: url(img/Party_004.avif); height: 200px;">
+                <div class="txt-box roller">客製化活動企劃服務</div>
+            </div>
+            <div class="col-md-4 bg-cover roller-box-right" style="background-image: url(img/Party_005.avif); height: 200px;">
+                <div class="txt-box roller">打造專屬節慶氛圍</div>
+            </div>
+        </div>
+        <div class="row vh-100">
+            <div class="col-md-3">
+                <div class="row d-flex flex-column h-100">
+                    <div class="bg-cover roller-box-left-top" style="background-image: url(img/Party_006.avif); height: 33.33%;">
+                        <div class="txt-box roller">精緻甜點饗宴</div>
+                    </div>
+                    <div class="bg-cover roller-box-left-top" style="background-image: url(img/Party_007.avif); height: 33.34%;">
+                        <div class="txt-box roller">人氣拍照打卡區</div>
+                    </div>
+                    <div class="bg-cover roller-box-left-top" style="background-image: url(img/Party_008.avif); height: 33.33%;">
+                        <div class="txt-box roller">質感主題派對設計</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 bg-cover roller-box-left-bottom" style="background-image: url(img/Party_001.avif);">
+                <div class="txt-box roller text-center">讓每一次聚會，<br>都像品牌發表會一樣耀眼</div>
+            </div>
+            <div class="col-md-3">
+                <div class="row d-flex flex-column h-100">
+                    <div class="bg-cover h-50 roller-box-right-top" style="background-image: url(img/Party_002.avif);">
+                        <div class="txt-box roller">專業團隊到場支援</div>
+                    </div>
+                    <div class="bg-cover h-50 roller-box-right-bottom" style="background-image: url(img/Party_009.avif);">
+                        <div class="txt-box roller">活動細節一次到位</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 bg-cover roller-box-bottom" style="background-image: url(img/Party_010.avif); height: 200px;">
+                <div class="txt-box roller">歡樂氣氛自然升溫</div>
+            </div>
+            <div class="col-md-3 bg-cover roller-box-bottom" style="background-image: url(img/Party_011.avif); height: 200px;">
+                <div class="txt-box roller">場地布置更有記憶點</div>
+            </div>
+            <div class="col-md-3 bg-cover roller-box-bottom" style="background-image: url(img/Party_012.avif); height: 200px;">
+                <div class="txt-box roller">活動主題一眼就懂</div>
+            </div>
+            <div class="col-md-3 bg-cover roller-box-bottom" style="background-image: url(img/Party_013.avif); height: 200px;">
+                <div class="txt-box roller">留下最有溫度的瞬間</div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+    
+</html>

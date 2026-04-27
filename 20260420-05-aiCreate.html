@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduVantage 領航教育 | 打造您的升學競爭力</title>
+    <!-- 引入 Bootstrap 5 (CDN 為例，確保預覽正常) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* 基礎樣式工具 */
+        .bg-cover {
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .txt-box {
+            color: white;
+            font-weight: 700;
+        }
+
+        /* Roller 效果邏輯 (沿用並優化) */
+        .roller-box {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            min-height: 300px;
+        }
+
+        .roller {
+            position: absolute;
+            background-color: rgba(13, 110, 253, 0.85); /* 使用品牌藍色 */
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* 方向控制 */
+        .roller-box-top .roller { transform: translateY(-100%); }
+        .roller-box-bottom .roller { transform: translateY(100%); }
+        .roller-box-left .roller { transform: translateX(-100%); }
+        .roller-box:hover .roller { transform: translate(0, 0); }
+
+        /* 導覽列與裝飾 */
+        .nav-placeholder {
+            background: rgba(255,255,255,0.95);
+            border-bottom: 2px solid #0d6efd;
+        }
+        
+        .btn-cta {
+            padding: 12px 30px;
+            font-size: 1.25rem;
+            font-weight: 900;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+        
+        .btn-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+    <!-- 0. 導覽列區塊 (模擬實務官網) -->
+    <div class="container-fluid sticky-top nav-placeholder py-3">
+        <div class="row align-items-center">
+            <div class="col-md-3 ps-5">
+                <h3 class="text-primary fw-bold mb-0">EduVantage</h3>
+            </div>
+            <div class="col-md-6 text-center d-none d-md-block">
+                <span class="mx-3 fw-bold">關於領航</span>
+                <span class="mx-3 fw-bold">師資陣容</span>
+                <span class="mx-3 fw-bold text-primary">熱門課程</span>
+                <span class="mx-3 fw-bold">學員見證</span>
+            </div>
+            <div class="col-md-3 text-end pe-5">
+                <button class="btn btn-outline-primary fw-bold">立即諮詢</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. 主視覺區 (Hero Section) -->
+    <div class="container-fluid">
+        <div class="row vh-100 bg-cover align-items-center" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop');">
+            <div class="col-md-8 offset-md-1">
+                <div class="txt-box text-shadow">
+                    <p class="h4 mb-3 fw-light">2024 秋季班盛大招生中</p>
+                    <h1 class="display-2 fw-black mb-4">不只是補習，<br>更是未來競爭力的領航員。</h1>
+                    <p class="h5 mb-5 fw-normal lh-base">獨家研發「PRIME 學習法」，幫助全台超過 5,000 位學員進入理想志願。<br>我們專注於邏輯啟發，而非死背考題。</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-primary btn-cta">了解課程詳情</a>
+                        <a href="#" class="btn btn-light btn-cta">預約免費試聽</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. 促銷與數據區 (Promotion/Trust Section) -->
+    <div class="container-fluid py-5 bg-white">
+        <div class="row text-center py-4">
+            <div class="col-md-3">
+                <h2 class="fw-bold text-primary">98%</h2>
+                <p class="text-muted">學員滿意度</p>
+            </div>
+            <div class="col-md-3 border-start">
+                <h2 class="fw-bold text-primary">15+</h2>
+                <p class="text-muted">專業師資團隊</p>
+            </div>
+            <div class="col-md-3 border-start">
+                <h2 class="fw-bold text-primary">500+</h2>
+                <p class="text-muted">台清交錄取人數</p>
+            </div>
+            <div class="col-md-3 border-start">
+                <h2 class="fw-bold text-primary">24/7</h2>
+                <p class="text-muted">線上解題服務</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. 課程分類入口 (應用 Roller 效果) -->
+    <div class="container-fluid px-0">
+        <div class="row g-0"> <!-- g-0 消除間隙，增加專業感 -->
+            <div class="col-md-4 roller-box roller-box-left bg-cover" style="background-image: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2070&auto=format&fit=crop');">
+                <div class="txt-box p-4 h-100 d-flex align-items-end text-shadow">
+                    <h3>高中職全科班</h3>
+                </div>
+                <div class="roller">
+                    <h4 class="fw-bold mb-3">掌握升學關鍵</h4>
+                    <p>針對新課綱設計，提供精準考情分析與弱點補強，讓每一分鐘都發揮最大價值。</p>
+                    <button class="btn btn-light btn-sm mt-2">查看課表</button>
+                </div>
+            </div>
+            <div class="col-md-4 roller-box roller-box-top bg-cover" style="background-image: url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=2071&auto=format&fit=crop');">
+                <div class="txt-box p-4 h-100 d-flex align-items-end text-shadow">
+                    <h3>多益/英語檢定</h3>
+                </div>
+                <div class="roller">
+                    <h4 class="fw-bold mb-3">突破語言職涯門檻</h4>
+                    <p>專業外籍講師與本土名師攜手，實戰題庫演練，目標一個月內提升 200 分。</p>
+                    <button class="btn btn-light btn-sm mt-2">查看課表</button>
+                </div>
+            </div>
+            <div class="col-md-4 roller-box roller-box-bottom bg-cover" style="background-image: url('https://images.unsplash.com/photo-1513258496099-48168024adb0?q=80&w=2070&auto=format&fit=crop');">
+                <div class="txt-box p-4 h-100 d-flex align-items-end text-shadow">
+                    <h3>成人職能培訓</h3>
+                </div>
+                <div class="roller">
+                    <h4 class="fw-bold mb-3">職場競爭力加值</h4>
+                    <p>Python、數據分析與商務簡報，由業界資深主管親自授課，結業即就業。</p>
+                    <button class="btn btn-light btn-sm mt-2">查看課表</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. 主打特色區 (Main Service Focus) -->
+    <div class="container-fluid py-5 mt-5">
+        <div class="row align-items-center">
+            <div class="col-md-5 offset-md-1">
+                <span class="text-primary fw-bold">OUR FEATURES</span>
+                <h2 class="display-5 fw-bold mb-4">為什麼選擇 EduVantage？</h2>
+                <div class="row mb-4">
+                    <div class="col-2">
+                        <h3 class="text-primary">01</h3>
+                    </div>
+                    <div class="col-10">
+                        <h5 class="fw-bold">精準小班制教學</h5>
+                        <p class="text-muted">每班不超過 15 人，確保每位學生都能獲得老師的直接指導與答疑。</p>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-2">
+                        <h3 class="text-primary">02</h3>
+                    </div>
+                    <div class="col-10">
+                        <h5 class="fw-bold">AI 數據分析弱點</h5>
+                        <p class="text-muted">透過自研系統分析學員測驗歷程，精確找出觀念斷層，提供個人化講義。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 h-50 bg-cover" style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070&auto=format&fit=crop'); min-height: 500px;">
+                <!-- 裝飾用右側大圖 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. 結尾 CTA 區 -->
+    <div class="container-fluid">
+        <div class="row py-5 bg-dark text-white text-center">
+            <div class="col-12 py-5">
+                <h2 class="display-6 fw-bold mb-4">準備好開始您的學習旅程了嗎？</h2>
+                <p class="mb-5 text-secondary">現在填單即可獲得「學習力評估報告」與「首期課程 85 折」優惠。</p>
+                <button class="btn btn-primary btn-lg px-5">立即領取優惠</button>
+            </div>
+            <div class="col-12 mt-5 text-secondary small">
+                © 2024 EduVantage Education Group. All rights reserved.
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

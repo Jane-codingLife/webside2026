@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
-    
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +13,7 @@
             background-color: var(--sky-blue07b);
             font-family: "微軟正黑體";
         }
+
         .box01 {
             font-size: 40px;
             font-weight: 900;
@@ -20,6 +21,7 @@
             border-radius: 10px;
             padding: 15px;
         }
+
         .box02 {
             font-size: 30px;
             font-weight: 900;
@@ -27,11 +29,12 @@
             border-radius: 10px;
             padding: 20px 0;
         }
+
         .box03 {
             height: 200px;
             margin-top: 15px;
             border-radius: 10px;
-            
+
             /* 文字 */
             /* text-align: center; */
             line-height: 200px;
@@ -42,6 +45,7 @@
             background-position: center center;
             background-size: cover;
         }
+
         .box04 {
             font-size: 30px;
             font-weight: 900;
@@ -49,20 +53,7 @@
             border-radius: 10px;
             padding: 30px 0;
         }
-        .box05 {
-            font-size: 30px;
-            font-weight: 900;
-            margin-top: 15px;
-            border-radius: 10px;
-            padding: 30px 0;
-        }
-        .box06 {
-            font-size: 30px;
-            font-weight: 900;
-            margin-top: 15px;
-            border-radius: 10px;
-            padding: 30px 0;
-        }
+
         .box07 {
             font-size: 24px;
             font-weight: 900;
@@ -72,14 +63,17 @@
         }
     </style>
 </head>
-    
+
 <body>
     <div class="container">
+        <!-- 第一區塊 -->
         <div class="row">
             <div class="col-md-10 offset-md-1">
                 <div class="box01 bg-primary text-light">旅行主題介紹頁</div>
             </div>
         </div>
+
+        <!-- 第二區塊 -->
         <div class="row justify-content-md-between">
             <div class="col-md-3">
                 <div class="box02 bg-success text-light">自然景色</div>
@@ -91,6 +85,8 @@
                 <div class="box02 bg-danger text-light">文化體驗</div>
             </div>
         </div>
+
+        <!-- 第三區塊 -->
         <div class="row">
             <div class="col-md-6">
                 <div class="box03 bg-light" style="background-image: url(img/TaiwanNature_004.avif);"></div>
@@ -115,46 +111,77 @@
             </div>
         </div>
 
+        <!-- 第四區塊 -->
         <div class="row flex-column">
             <div class="col-md-4">
                 <div class="box04 bg-secondary text-light">景點A</div>
             </div>
-            <div class="col-md-4 align-self-center">
+            <div class="col-md-4 align-self-md-center">
                 <div class="box04 bg-secondary text-light">景點B</div>
             </div>
-            <div class="col-md-4 align-self-end">
+            <div class="col-md-4 align-self-md-end">
                 <div class="box04 bg-secondary text-light">景點C</div>
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-6 col-md-3 order-md-3">
-                <div class="box05 bg-primary text-light">01</div>
+                <div class="box04 bg-primary text-light">01</div>
             </div>
             <div class="col-6 col-md-3 order-md-2">
-                <div class="box05 bg-warning">02</div>
+                <div class="box04 bg-warning">02</div>
             </div>
             <div class="col-6 col-md-3 order-md-1">
-                <div class="box05 bg-danger text-light">03</div>
+                <div class="box04 bg-danger text-light">03</div>
             </div>
             <div class="col-6 col-md-3 order-md-0">
-                <div class="box05 bg-success">04</div>
+                <div class="box04 bg-success">04</div>
+            </div>
+        </div> -->
+
+        <!-- 第五區塊 -->
+        <div class="row flex-md-row-reverse">
+            <div class="col-6 col-md-3">
+                <div class="box04 bg-primary text-light">01</div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="box04 bg-warning">02</div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="box04 bg-danger text-light">03</div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="box04 bg-success">04</div>
             </div>
         </div>
+
+        <!-- 第六區塊 -->
+        <!-- me-auto 往右邊推 -->
+        <!-- <div class="row">
+            <div class="col-md-3 me-auto">
+                <div class="box04 bg-dark text-light">左</div>
+            </div>
+            <div class="col-md-3">
+                <div class="box04 bg-dark text-light">右</div>
+            </div>
+        </div> -->
+        <!-- ms-auto 往左邊推 -->
         <div class="row">
             <div class="col-md-3">
-                <div class="box06 bg-dark text-light">左</div>
+                <div class="box04 bg-dark text-light">左</div>
             </div>
-            <div class="col-md-3 offset-md-6">
-                <div class="box06 bg-dark text-light">右</div>
+            <div class="col-md-3 ms-auto">
+                <div class="box04 bg-dark text-light">右</div>
             </div>
         </div>
+
+        <!-- 第七區塊 -->
         <div class="row justify-content-center">
-            <div class="d-none d-xl-block col-xl-10">
+            <div class="col-xl-10 d-none d-xl-block">
                 <div class="box07 bg-warning">這一塊只有 XL 以上才顯示</div>
             </div>
         </div>
     </div>
     <script src="js/bootstrap.bundle.min.js"></script>
 </body>
-    
+
 </html>

@@ -1,3 +1,4 @@
+/************************* 字型載入 Google Font *************************/
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200..900&display=swap');
 /* font-family: "Noto Serif TC", serif; */
 
@@ -8,7 +9,9 @@ body {
   font-family: "Klee One", cursive, "Noto Serif TC", serif;
 }
 
+/****** root 通常用來處理變數 ******/
 :root {
+  /************************* 色彩區塊 *************************/
   /* 主要品牌色 - 深藍色 (Header/Footer/標題) */
   --brand-primary01: #1d3557;
   --brand-primary01b: #1d3557ce;
@@ -133,13 +136,18 @@ body {
 }
 
 
+/************************* 圖片相關應用 *************************/
+.bg-cover {
+  background-position: center center;
+  background-size: cover;
+}
+
+
 /************************* Roller 相關應用 *************************/
 /* 外層 div +入 roller-box-*，內層 div +入 roller 即可達成效果 */
 /* 可以參考 20260420-03-roller.html */
 /* 從上方滑入 */
 .roller-box-top {
-  padding: 0;
-  margin: 0;
   position: relative;
   overflow: hidden;
 }
@@ -149,6 +157,8 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
 
   display: flex;
   align-items: center;
@@ -164,8 +174,6 @@ body {
 
 /* 從下方滑入 */
 .roller-box-bottom {
-  padding: 0;
-  margin: 0;
   position: relative;
   overflow: hidden;
 }
@@ -175,6 +183,8 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
 
   display: flex;
   align-items: center;
@@ -190,8 +200,6 @@ body {
 
 /* 從左方滑入 */
 .roller-box-left {
-  padding: 0;
-  margin: 0;
   position: relative;
   overflow: hidden;
 }
@@ -201,6 +209,8 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
 
   display: flex;
   align-items: center;
@@ -216,8 +226,6 @@ body {
 
 /* 從右方滑入 */
 .roller-box-right {
-  padding: 0;
-  margin: 0;
   position: relative;
   overflow: hidden;
 }
@@ -227,6 +235,8 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
 
   display: flex;
   align-items: center;
@@ -242,8 +252,6 @@ body {
 
 /* 從右上方滑入 */
 .roller-box-right-top {
-  padding: 0;
-  margin: 0;
   position: relative;
   overflow: hidden;
 }
@@ -253,6 +261,8 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
 
   display: flex;
   align-items: center;
@@ -268,8 +278,6 @@ body {
 
 /* 從右下方滑入 */
 .roller-box-right-bottom {
-  padding: 0;
-  margin: 0;
   position: relative;
   overflow: hidden;
 }
@@ -279,6 +287,8 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
 
   display: flex;
   align-items: center;
@@ -294,8 +304,6 @@ body {
 
 /* 從左上方滑入 */
 .roller-box-left-top {
-  padding: 0;
-  margin: 0;
   position: relative;
   overflow: hidden;
 }
@@ -305,6 +313,8 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
 
   display: flex;
   align-items: center;
@@ -320,8 +330,6 @@ body {
 
 /* 從左下方滑入 */
 .roller-box-left-bottom {
-  padding: 0;
-  margin: 0;
   position: relative;
   overflow: hidden;
 }
@@ -331,6 +339,8 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
 
   display: flex;
   align-items: center;
