@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>時間軸排版</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myCssTools.css">
+    <style>
+        body {
+            background-color: #DDD;
+        }
+
+        .timeline-section {
+            position: relative;
+        }
+
+        .timeline-section::before {
+            position: absolute;
+            content: "";
+            top: -1%;
+            bottom: -1%;
+            width: 3px;
+            background-color: #666;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-section-point {
+            position: relative;
+        }
+
+        .timeline-section-point::before {
+            position: absolute;
+            content: "";
+            width: 20px;
+            height: 20px;
+            background-color: #ffffff;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            border-radius: 50%;
+            border: 3px solid #ff009d;
+            box-shadow: 0 0 5px 2px #333;
+        }
+
+        .timeline-section-point:hover::before {
+            width: 25px;
+            height: 25px;
+        }
+
+        @media screen and (max-width: 768px) {
+            /* 側邊列 */
+            .timeline-section::before {
+                left: -5%;
+                transform: translateX(0%);
+            }
+
+            .timeline-section-point::before {
+                top: 2%;
+                left: -4%;
+                transform: translateX(0%);
+            }
+
+            .timeline-section-point:hover::before {
+                width: 20px;
+                height: 20px;
+            }
+
+        }
+        @media screen and (max-width: 570px) {
+            /* 消失 */
+            .timeline-section::before, .timeline-section-point::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="timeline-section">
+            <div class="row align-items-center timeline-section-point">
+                <div class="col-md-6">
+                    <div class="text">
+                        <div class="h3 fw-bolder text-primary text-md-end">1999年</div>
+                        <p class="fs-6">吸收詳細訊息發現還能輕輕那個爭取儘量，天氣頓時能否打算預計違反貸款常用我不，容量日本美元容易你說之家二手股份。</p>
+                        <p class="fs-6">吸收詳細訊息發現還能輕輕那個爭取儘量。 核心存在此處遺憾發表獲得操作系統付款是我，協會技術認證等待研究所畢業生新技術一口氣花蓮有很多好多，話題輕鬆收集。</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="img-box bg-cover" style="background-image: url(img/Party_013.avif); height: 260px;">
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center flex-md-row-reverse timeline-section-point">
+                <div class="col-md-6">
+                    <div class="text">
+                        <div class="h3 fw-bolder text-primary">2000年</div>
+                        <p class="fs-6">吸收詳細訊息發現還能輕輕那個爭取儘量，天氣頓時能否打算預計違反貸款常用我不，容量日本美元容易你說之家二手股份。</p>
+                        <p class="fs-6">吸收詳細訊息發現還能輕輕那個爭取儘量。</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="img-box bg-cover" style="background-image: url(img/Party_014.avif); height: 260px;">
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center timeline-section-point">
+                <div class="col-md-6">
+                    <div class="text">
+                        <div class="h3 fw-bolder text-primary text-md-end">2005年</div>
+                        <p class="fs-6">吸收詳細訊息發現還能輕輕那個爭取儘量，天氣頓時能否打算預計違反貸款常用我不，容量日本美元容易你說之家二手股份。</p>
+                        <p class="fs-6">吸收詳細訊息發現還能輕輕那個爭取儘量。</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="img-box bg-cover" style="background-image: url(img/Party_015.avif); height: 260px;">
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center flex-md-row-reverse timeline-section-point">
+                <div class="col-md-6">
+                    <div class="text">
+                        <div class="h3 fw-bolder text-primary">2008年</div>
+                        <p class="fs-6">吸收詳細訊息發現還能輕輕那個爭取儘量，天氣頓時能否打算預計違反貸款常用我不，容量日本美元容易你說之家二手股份。</p>
+                        <p class="fs-6">吸收詳細訊息發現還能輕輕那個爭取儘量。</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="img-box bg-cover" style="background-image: url(img/Party_018.avif); height: 260px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

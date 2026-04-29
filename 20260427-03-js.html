@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch11 表單(JavaScript)</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myCssTools.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5 shadow p-3 mt-5 rounded-4">
+                <div class="h2 text-bg-danger text-center rounded-2 py-2">產品訂購單</div>
+                <div class="mt-1">
+                    <label for="" class="form-label col-form-label-lg">產品名稱</label>
+                    <input type="text" class="form-control form-control-lg" id="pd_name">
+                </div>
+                <div class="mt-1">
+                    <label for="" class="form-label col-form-label-lg">產品數量</label>
+                    <input type="number" class="form-control form-control-lg" min="1" id="pd_num">
+                </div>
+                <div class="mt-1">
+                    <label for="" class="form-label col-form-label-lg">產品規格</label>
+                    <input type="text" class="form-control form-control-lg" min="1" id="pd_spec" list="specList">
+                    <datalist id="specList">
+                        <option value="350 cc"></option>
+                        <option value="500 cc"></option>
+                        <option value="750 cc"></option>
+                        <option value="1000 cc"></option>
+                    </datalist>
+                </div>
+                <div class="text-end mt-4">
+                    <button class="btn btn-primary" id="submit_buy">訂購</button>
+                    <button class="btn btn-secondary">取消</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-5 shadow p-3 my-4 rounded-4">
+                <div class="h2 text-bg-success text-center rounded-2 py-2">產品訂購單表</div>
+                <div id="data_list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-4.0.0.js"></script>
+    <script>
+        $(function () {
+            // 監聽按鈕 #submit_buy
+            $("#submit_buy").click(function () {
+                // console.log($("#pd_name").val()+"要"+$("#pd_num").val());
+
+                // $("#pd_out_name").text($("#pd_name").val());
+                // $("#pd_out_num").text($("#pd_num").val());
+
+                let html_str = `
+                <div class="h4">產品名稱：
+                    <span class="h1 text-info fw-bolder" id="pd_out_name">${$("#pd_name").val()}</span>
+                </div>
+                <div class="h4">產品數量：
+                    <span class="h1 text-danger fw-bolder" id="pd_out_num">${$("#pd_num").val()}</span>
+                </div>
+                <div class="h4">產品規格：
+                    <span class="h1 text-primary fw-bolder" id="pd_out_spec">${$("#pd_spec").val()}</span>
+                </div>
+                <hr style="height: 4px;">
+                `
+                $("#data_list").append(html_str);
+
+            });
+
+        })
+    </script>
+</body>
+
+</html>

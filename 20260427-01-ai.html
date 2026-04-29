@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命地圖：高端靈性導航與品牌升級</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myCssTools.css">
+    <style>
+        /* 基礎風格設定：神秘且暖調的背景 */
+        body {
+            background-color: var(--brand-primary02); /* 使用深藍色基底 */
+            color: var(--sky-pink03); /* 使用極淡紫文字增加層次 */
+            overflow-x: hidden;
+        }
+
+        /* 頁首區塊 */
+        .header-brand {
+            padding: 100px 0 60px;
+            background: var(--sky-grad-A);
+            text-align: center;
+            border-bottom: 2px solid var(--sky-pink06a);
+            margin-bottom: 50px;
+        }
+
+        .header-brand h1 {
+            font-family: "Noto Serif TC", serif;
+            font-weight: 900;
+            letter-spacing: 5px;
+            color: var(--sky-blue10);
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-brand p {
+            font-weight: 200;
+            color: var(--sky-blue03);
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+
+        /* 時間軸主容器 */
+        .timeline-section {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        /* 桌機版垂直線 */
+        .timeline-section::before {
+            position: absolute;
+            content: "";
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--sky-pink07), var(--sky-blue06), transparent);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* 時間軸節點圓點 */
+        .timeline-section-point {
+            position: relative;
+            margin-bottom: 80px;
+        }
+
+        .timeline-section-point::before {
+            position: absolute;
+            content: "";
+            width: 18px;
+            height: 18px;
+            background-color: var(--brand-primary02);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            border-radius: 50%;
+            border: 2px solid var(--sky-pink07);
+            box-shadow: 0 0 15px var(--sky-pink07);
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-section-point:hover::before {
+            width: 24px;
+            height: 24px;
+            background-color: var(--sky-pink07);
+            box-shadow: 0 0 25px var(--sky-pink08);
+        }
+
+        /* 卡片內容優化 */
+        .content-box {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .content-box:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .category-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            border-radius: 50px;
+            margin-bottom: 15px;
+            background: var(--sky-ui-bg-C);
+            color: var(--sky-ui-text-C);
+        }
+
+        .img-box {
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--sky-blue01);
+        }
+
+        /* 手機版：完全隱藏軸線與節點 */
+        @media screen and (max-width: 768px) {
+            .timeline-section::before, 
+            .timeline-section-point::before {
+                display: none;
+            }
+            
+            .content-box {
+                margin-bottom: 20px;
+            }
+
+            .img-box {
+                height: 200px !important;
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 頁首品牌標題區 -->
+    <header class="header-brand">
+        <div class="container">
+            <h1>MAP OF DESTINY</h1>
+            <p class="fs-5">生命地圖：高端靈性導航與品牌營運升級專案</p>
+            <p class="small">結合星盤宮位能量與商業實務履歷，為您的企業提供精準的決策指引與市場定位。</p>
+        </div>
+    </header>
+
+    <div class="container py-5">
+        <div class="timeline-section">
+
+            <!-- 人生履歷 1 -->
+            <div class="row align-items-center timeline-section-point">
+                <div class="col-md-6">
+                    <div class="content-box text-md-end">
+                        <span class="category-tag">品牌根基：2015 - 2018</span>
+                        <h3 class="fw-bolder text-info">第一階段：市場探索與專業奠基</h3>
+                        <p class="fs-6 opacity-75">在此階段，我們致力於建立核心服務體系。透過對跨國企業的品牌諮詢，累積了深厚的市場洞察力。這不僅是技術的磨練，更是品牌價值的初步塑形，為後續的升級方案打下堅實基礎。</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="img-box bg-cover" style="background-image: url('img/map_001.avif'); height: 320px;"></div>
+                </div>
+            </div>
+
+            <!-- 人生履歷 2 -->
+            <div class="row align-items-center flex-md-row-reverse timeline-section-point">
+                <div class="col-md-6">
+                    <div class="content-box">
+                        <span class="category-tag">營運升級：2019 - 2021</span>
+                        <h3 class="fw-bolder text-info">第二階段：數位轉型與會員體驗</h3>
+                        <p class="fs-6 opacity-75">隨著業務擴張，我們導入了全方位的 CRM 系統，大幅優化了會員體驗。重點放在提升服務深度而非廣度，使品牌在高端市場中脫穎而出，實現了年度營收與客戶滿意度的雙重成長。</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="img-box bg-cover" style="background-image: url('img/map_002.avif'); height: 320px;"></div>
+                </div>
+            </div>
+
+            <!-- 星盤指引 1 -->
+            <div class="row align-items-center timeline-section-point">
+                <div class="col-md-6">
+                    <div class="content-box text-md-end">
+                        <span class="category-tag">靈性導航：決策維度</span>
+                        <h3 class="fw-bolder" style="color: var(--sky-pink07);">第三階段：星盤定位與商業合盤</h3>
+                        <p class="fs-6 opacity-75">這是一個轉折點，我們開始將「星盤宮位」納入高端顧問的決策工具箱。利用天體能量週期規劃企業發布與擴張時機，確保品牌動向符合自然流動，減少不必要的資源損耗，達成精準營運。</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="img-box bg-cover" style="background-image: url('img/map_003.avif'); height: 320px;"></div>
+                </div>
+            </div>
+
+            <!-- 星盤指引 2 -->
+            <div class="row align-items-center flex-md-row-reverse timeline-section-point">
+                <div class="col-md-6">
+                    <div class="content-box">
+                        <span class="category-tag">能量重塑：品牌共振</span>
+                        <h3 class="fw-bolder" style="color: var(--sky-pink07);">第四階段：靈魂契約與願景落實</h3>
+                        <p class="fs-6 opacity-75">探討品牌的「靈魂核心」，將企業願景與個人命盤深度結合。此階段專注於品牌永續性，協助創辦人找回初衷，並將這份純粹的能量轉化為具體的市場感染力，建立高度忠誠的會員群體。</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="img-box bg-cover" style="background-image: url('img/map_004.avif'); height: 320px;"></div>
+                </div>
+            </div>
+
+            <!-- 綜合考量 -->
+            <div class="row align-items-center timeline-section-point">
+                <div class="col-md-6">
+                    <div class="content-box text-md-end">
+                        <span class="category-tag">未來佈局：2026 展望</span>
+                        <h3 class="fw-bolder" style="color: var(--sky-blue06);">第五階段：跨界整合與全球地圖</h3>
+                        <p class="fs-6 opacity-75">展望未來，我們將生命地圖服務擴展至全球。整合大數據與星曆預測，為跨國會員提供即時、專業且具備靈性深度的戰略指引，開創一個專業、平衡且具備溫度的品牌新紀元。</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="img-box bg-cover" style="background-image: url('img/stars_003.avif'); height: 320px;"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 頁尾簡易版面 -->
+    <footer class="py-5 text-center" style="background: rgba(0,0,0,0.2);">
+        <div class="container">
+            <p class="small opacity-50">© 2026 DESTINY MAP CONSULTING. 專業、靈性、精準營運。</p>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

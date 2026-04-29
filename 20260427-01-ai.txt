@@ -1,0 +1,30 @@
+請依照我提供的 HTML/CSS 技術範圍，產生一個「生命履歷/靈性星盤整合的地圖時間軸」的實務版面。
+
+限制條件：
+1. 不可以使用超出原始範例的技術。
+2. 只能使用 HTML、CSS、Bootstrap Grid、row、col-md-6、container、flex-row-reverse、background-image、position、::before 偽元素、hover、media query。
+3. 不可以使用 JavaScript 動畫、不可以使用 Bootstrap 元件外掛、不可以使用新的框架。
+4. 版面要使用左右交錯時間軸設計。
+5. 桌機版中間要有垂直時間軸線與節點圓點。
+6. 手機版要隱藏時間軸線與節點，內容改成上下排列。
+7. 圖片使用 background-image，url 可使用 "img/map_001.avif" 圖片路徑與檔名命名規則，每使用此圖片方式，加入 .bg-cover。
+8. 請保留 <link rel="stylesheet" href="css/bootstrap.min.css"> 與 <script src="js/bootstrap.bundle.min.js"></script> 與 <link rel="stylesheet" href="css/myCssTools.css">。
+
+主題需求：
+請以「生命地圖」為主題，內容要有商業感，不要像作文或單純介紹歷史。
+
+區塊內容請包含：
+1. 頁首品牌標題區
+2. 人生履歷 1
+3. 人生履歷 2
+4. 星盤指引 1
+5. 星盤指引 2
+6. 綜合考量
+
+文字風格：
+請使用像企業官網的語氣，重點放在服務價值、營運升級、會員體驗、品牌專業感，不要使用假文或無意義文字。
+
+設計風格：
+整體請神秘又帶點柔和的溫暖風格，帶著探索與專業指引的態度，必須符合高端、專業、商業品牌。
+
+請產生完整 HTML 程式碼，包含 head、style、body 與 script。

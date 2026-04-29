@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch09 Form 表單</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myCssTools.css">
+    <style>
+        .box {
+            border-radius: 30px;
+            padding-left: 30px;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12">
+
+                <!-- Form 表單 -->
+                <div class="display-5 mt-5 text-bg-danger box">1.Form 表單</div>
+                <div class="mt-3">
+                    <label for="" class="form-label">帳號</label>
+                    <input type="text" class="form-control form-control-sm is-valid">
+                    <div class="valid-feedback">帳號輸入符合規定</div>
+                    <div class="invalid-feedback">帳號輸入不符合規定</div>
+                </div>
+                <div class="mt-3">
+                    <label for="" class="form-label">密碼 <span class="mark bg-info">type "password"</span> <span
+                            class="mark">唯讀(不可輸入) input +屬性 "disabled"</span></label>
+                    <input type="password" class="form-control" disabled>
+                </div>
+                <div class="mt-3">
+                    <label for="" class="form-label">數量 <span class="mark bg-info">type "number"</span></label>
+                    <input type="number" class="form-control form-control-lg" min="1" max="10" value="5">
+                </div>
+                <div class="mt-3">
+                    <label for="" class="form-label">單選檔案 <span class="mark bg-info">type "file"</span></label>
+                    <input type="file" class="form-control form-control-lg">
+                </div>
+                <div class="mt-3">
+                    <label for="" class="form-label">多選檔案 <span class="mark">input +屬性 "multiple"</span></label>
+                    <input type="file" class="form-control form-control-lg" multiple>
+                </div>
+                <div class="mt-3">
+                    <label for="" class="form-label">輸入提示 <span class="mark">input +屬性 "list" 給 id => datalist+opeion
+                            清單</span></label>
+                    <input type="text" class="form-control form-control-lg" list="dataList">
+                    <datalist id="dataList">
+                        <option value="便當01"></option>
+                        <option value="便當02"></option>
+                        <option value="便當03"></option>
+                        <option value="便當04"></option>
+                        <option value="便當05"></option>
+                    </datalist>
+                </div>
+
+                <!-- Select -->
+                <div class="display-5 mt-5 text-bg-danger box">2.Select</div>
+                <div class="mt-3">
+                    <label for="" class="form-label">縣市名稱</label>
+                    <select name="" id="" class="form-select form-select-lg">
+                        <option value="苗栗縣">苗栗縣</option>
+                        <option value="台中市">台中市</option>
+                        <option value="雲林市">雲林市</option>
+                        <option value="高雄市">高雄市</option>
+                        <option value="南投縣">南投縣</option>
+                    </select>
+                    <p class="mark mt-3">select>option[disabled selected] 兩個屬性的用意：唯讀，但預設選取。所以在使用者選擇選項後就不能被選取了。</p>
+                    <select name="" id="" class="mt-3 form-select form-select-lg">
+                        <option value="" class="text-center" disabled selected>--- 請選擇鄉鎮市區 ---</option>
+                        <option value="苗栗縣">苗栗縣</option>
+                        <option value="台中市">台中市</option>
+                        <option value="雲林市">雲林市</option>
+                        <option value="高雄市">高雄市</option>
+                        <option value="南投縣">南投縣</option>
+                    </select>
+                </div>
+
+                <!-- Checkbox and Readio -->
+                <div class="display-5 mt-5 text-bg-danger box">3.Checkbox and Radio</div>
+                <div class="row mt-3">
+                    <div class="col-3 text-bg-info">type "check" / "redio"</div>
+                    <div class="col-9 mark">都需要設相同的 name 表示同一組，redio 就會依據其特性只能選一。</div>
+                </div>
+                <div class="mt-3 form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" name="chk01">
+                    <label for="" class="form-check-label">選項01</label>
+                </div>
+                <div class="mt-3 form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" name="chk01">
+                    <label for="" class="form-check-label">選項02</label>
+                </div>
+                <div class="mt-3 form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" name="chk01">
+                    <label for="" class="form-check-label">選項03</label>
+                </div>
+                <div class="mt-3 form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" name="chk01">
+                    <label for="" class="form-check-label">選項04</label>
+                </div>
+                <div class="mt-3 form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="radio01">
+                    <label for="" class="form-check-label">選項05</label>
+                </div>
+                <div class="mt-3 form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="radio01">
+                    <label for="" class="form-check-label">選項06</label>
+                </div>
+                <div class="mt-3 form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="radio01">
+                    <label for="" class="form-check-label">選項07</label>
+                </div>
+                <div class="mt-3 form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="radio01">
+                    <label for="" class="form-check-label">選項08</label>
+                </div>
+                <div class="mt-3 form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="radio01">
+                    <label for="" class="form-check-label">選項09</label>
+                </div>
+
+                <!-- Switch -->
+                <div class="display-5 mt-5 text-bg-danger box">4.Switch</div>
+                <div class="mt-3 form-switch form-check-inline">
+                    <input type="checkbox" class="form-check-input">
+                    <label for="" class="form-check-label" style="width: 50px;">開/關</label>
+                </div>
+                <div class="mt-3 form-switch form-check-inline">
+                    <input type="checkbox" class="form-check-input" checked>
+                    <label for="" class="form-check-label">開/關</label>
+                    <span class="mark">預設為開 input 屬性 + "checked"</span>
+                </div>
+
+                <!-- 群組相關 -->
+                <div class="display-5 mt-5 text-bg-danger box">5.Input-group 群組</div>
+                <div class="mt-3 input-group input-group-sm">
+                    <span class="input-group-text">帳號</span>
+                    <input type="text" class="form-control" placeholder="請輸入帳號">
+                </div>
+                <div class="mt-3 input-group">
+                    <input type="text" class="form-control" placeholder="請輸入 Gmail 信箱帳號">
+                    <span class="input-group-text">@gmail.com</span>
+                </div>
+                <div class="mt-3 input-group input-group-lg">
+                    <span class="input-group-text">手機 +886 9</span>
+                    <input type="text" class="form-control" placeholder="請輸入手機號碼後八碼">
+                </div>
+
+                <!--  -->
+                <div class="display-5 mt-5 text-bg-danger box">6.浮動標籤(floating label)</div>
+                <p class="mt-3 mark">input 屬性要 +placeholder 才會有浮上去的動態效果</p>
+                <div class="mt-3 form-floating">
+                    <input type="text" class="form-control" placeholder="">
+                    <label for="" class="form-label">請輸入帳號</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
