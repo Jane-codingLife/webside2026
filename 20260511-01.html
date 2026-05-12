@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch11 練習02</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myCssTools.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 shadow-lg rounded-2 mt-3 p-4">
+                <div class="h1 text-center text-bg-info p-2 rounded-4 fw-bolder text-light">飲料商品建置</div>
+                <div class="mb-3">
+                    <label for="pname" class="form-label col-form-label-lg">商品名稱</label>
+                    <input id="pname" type="text" class="form-control form-control-lg" list="plist"
+                        placeholder="不可空白，最多6字！">
+                    <datalist id="plist">
+                        <option value="紅茶"></option>
+                        <option value="綠茶"></option>
+                        <option value="烏龍茶"></option>
+                        <option value="奶茶"></option>
+                        <option value="珍珠奶茶"></option>
+                        <option value="紅茶拿鐵"></option>
+                        <option value="抹茶拿鐵"></option>
+                        <option value="咖啡紅茶"></option>
+                        <option value="豆漿紅茶"></option>
+                        <option value="冬瓜茶"></option>
+                        <option value="冬瓜檸檬"></option>
+                        <option value="檸檬紅茶"></option>
+                        <option value="百香綠茶"></option>
+                        <option value="多多綠茶"></option>
+                        <option value="蜂蜜綠茶"></option>
+                        <option value="仙草奶茶"></option>
+                        <option value="波霸奶茶"></option>
+                        <option value="可可拿鐵"></option>
+                        <option value="美式咖啡"></option>
+                        <option value="卡布奇諾"></option>
+                    </datalist>
+                    <div class="valid-feedback">產品名稱符合規定</div>
+                    <div class="invalid-feedback">產品名稱不符合規定</div>
+                </div>
+                <div class="mb-3">
+                    <label for="pnum" class="form-label col-form-label-lg">購買數量</label>
+                    <input id="pnum" type="number" class="form-control form-control-lg" min="1" max="10"
+                        placeholder="最少1組，最多10組！">
+                    <div class="valid-feedback">數量符合規定</div>
+                    <div class="invalid-feedback">數量不符合規定</div>
+                </div>
+                <div class="mb-3">
+                    <label for="pshelf" class="form-label col-form-label-lg">置放架位</label>
+                    <select id="pshelf" class="form-select form-select-lg is-invalid">
+                        <option value="" class="text-center text-info fw-bolder" disabled selected>-- 請選擇貨架編號 --
+                        </option>
+                        <option value="編號01">貨架編號01</option>
+                        <option value="編號02">貨架編號02</option>
+                        <option value="編號03">貨架編號03</option>
+                        <option value="編號04">貨架編號04</option>
+                        <option value="編號05">貨架編號05</option>
+                        <option value="編號06">貨架編號06</option>
+                        <option value="編號07">貨架編號07</option>
+                    </select>
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">請選擇貨架</div>
+                </div>
+                <label class="form-label">添加的配料種類 <mark class="rounded-4">(可複選)</mark></label>
+                <div class="mb-3">
+                    <div class="form-check form-check-inline">
+                        <input name="burden" type="checkbox" class="form-check-input is-valid" value="椰果">
+                        <label class="form-check-label">椰果</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input name="burden" type="checkbox" class="form-check-input is-valid" value="波霸" checked>
+                        <label class="form-check-label">波霸</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input name="burden" type="checkbox" class="form-check-input is-valid" value="珍珠" checked>
+                        <label class="form-check-label">珍珠</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input name="burden" type="checkbox" class="form-check-input is-valid" value="茶凍">
+                        <label class="form-check-label">茶凍</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input name="burden" type="checkbox" class="form-check-input is-valid" value="蘆薈">
+                        <label class="form-check-label">蘆薈</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input name="burden" type="checkbox" class="form-check-input is-valid" value="檸檬">
+                        <label class="form-check-label">檸檬</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input name="burden" type="checkbox" class="form-check-input is-valid" value="鮮奶改牛乳">
+                        <label class="form-check-label">鮮奶改牛乳</label>
+                    </div>
+                    <div id="burden_feeback" class="small text-success">符合勾選條件</div>
+                </div>
+                <label class="form-label">公升數</label>
+                <div class="mb-3">
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input is-invalid" name="ccNum" value="1000 cc">
+                        <label class="form-check-label">1000 cc</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input is-invalid" name="ccNum" value="750 cc">
+                        <label class="form-check-label">750 cc</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input is-invalid" name="ccNum" value="500 cc">
+                        <label class="form-check-label">500 cc</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input is-invalid" name="ccNum" value="350 cc">
+                        <label class="form-check-label">350 cc</label>
+                    </div>
+                    <div id="ccNum_feeback" class="small text-danger">請選擇想要的CC數</div>
+                </div>
+
+                <div class="text-end">
+                    <button id="ok_btn" class="btn btn-primary">確認</button>
+                    <button id="reset" class="btn btn-secondary">取消</button>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 shadow-lg rounded-2 mt-3 p-4">
+                <div class="h1 text-center text-bg-success p-2 rounded-4 fw-bolder text-light">建置結果</div>
+                <div id="showmsg" class="mt-3">
+                    <!-- <div class="h3">產品名稱：<span class="text-primary">xxx</span></div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-4.0.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.13.2/dist/axios.min.js"></script>
+    <script>
+        let flag_pname = false;
+        let flag_pnum = false;
+        let flag_pshelf = false;
+        let flag_burden = true;
+        let flag_ccNum = true;
+        $(function () {
+            // 輸入欄位監聽 #pname
+            // blur => 輸入完畢離開時(滑鼠點擊其他地方時的行為)
+            // this => 當下/現在發生的事
+            $("#pname").blur(function () {
+                $(this).removeClass('is-invalid is-valid');
+                if ($(this).val().length >= 1 && $(this).val().length <= 6) {
+                    // 符合規定 is-valid
+                    $(this).addClass('is-valid');
+                    flag_pname = true;
+                } else {
+                    // 不符合規定 is-invalid
+                    $(this).addClass('is-invalid');
+                    flag_pname = false;
+                };
+            });
+            $("#pnum").blur(function () {
+                $(this).removeClass('is-invalid is-valid');
+                if ($(this).val() >= 1 && $(this).val() <= 10) {
+                    // 符合規定 is-valid
+                    $(this).addClass('is-valid');
+                    flag_pnum = true;
+                } else {
+                    // 不符合規定 is-invalid
+                    $(this).addClass('is-invalid');
+                    flag_pnum = false;
+                };
+            });
+
+            // select
+            // change => 有改變就觸發
+            $("#pshelf").change(function () {
+                // console.log($(this).val());
+                $(this).removeClass('is-invalid');
+                $(this).addClass('is-valid');
+                flag_pshelf = true;
+            });
+
+            // Checkbox
+            $("input[name='burden']").change(function () {
+                console.log($("input[name='burden']:checked").length);
+                $("input[name='burden']").removeClass('is-invalid');
+                if ($("input[name='burden']:checked").length > 0) {
+                    // 任選其一 burden_feeback/is-vaild
+                    $("input[name='burden']").addClass('is-valid');
+                    $("#burden_feeback").removeClass('text-danger').addClass('text-success').text('符合勾選條件');
+                    flag_burden = true;
+                } else {
+                    $("input[name='burden']").addClass('is-invalid');
+                    $("#burden_feeback").removeClass('text-success').addClass('text-danger').text('請勾選至少一個種類');
+                    flag_burden = false;
+                };
+            });
+
+            // Radio
+            $("input[name='ccNum']").change(function () {
+                // console.log($("input[name='ccNum']:checked").val());
+                $("input[name='ccNum']").removeClass('is-invalid').addClass('is-valid');
+                $("#ccNum_feeback").removeClass('text-danger').addClass('text-success').text('符合勾選條件');
+                flag_ccNum = true;
+            });
+
+            // 按鈕監聽 #ok_btn
+            $("#ok_btn").click(function () {
+                if (flag_pname && flag_pnum && flag_pshelf && flag_burden && flag_ccNum) {
+                    // console.log($("#pname").val());
+
+                    // 收集 #burden 的 checkbox 資料
+                    let burdens = [];
+                    // input 標籤，屬性 name 為 burden 的區塊，只找被 checked
+                    // each => 每個都拜訪
+                    $("input[name='burden']:checked").each(function () {
+                        // console.log($(this).val());
+                        burdens.push($(this).val());
+                    });
+                    console.log(burdens);
+                    console.log(burdens.join("/"));
+
+                    // 顯示結果 #showmsg
+                    $("#showmsg").html(
+                        `<div class="h3">產品名稱：<span class="text-primary">${$("#pname").val()}</span></div>
+                        <div class="h3">產品數量：<span class="text-primary">${$("#pnum").val()}</span></div>
+                        <div class="h3">置放架位：<span class="text-primary">${$("#pshelf").val()}</span></div>
+                        <div class="h3">配料添加：<p class="text-primary">${burdens.join('/')}</p></div>
+                        <div class="h3">公升數：<span class="text-primary">${$("input[name='ccNum']:checked").val()}</span></div>`
+                    );
+
+                    // 轉 JSON 格式 => 物件
+                    // { "id": "1", "pname": "珍珠奶茶", "pnum": 3, "pshelf": "編號01", "burden": "珍珠/椰果", "ccNum": "500 cc" }
+
+                    let dataJSON = {};
+                    dataJSON["pname"] = $("#pname").val();
+                    dataJSON["pnum"] = $("#pnum").val();
+                    dataJSON["pshelf"] = $("#pshelf").val();
+                    dataJSON["burden"] = burdens.join('/');
+                    dataJSON["ccNum"] = $("input[name='ccNum']:checked").val();
+
+                    console.log(JSON.stringify(dataJSON));
+
+                    // 將 JSON 字串傳遞至後端
+                    // CRUD 新增C 讀取R 更新U 刪除D
+                    axios.post('http://localhost:3000/products', dataJSON)
+                        .then(function (response) {
+                            console.log(response);
+                            if (response.status == 201) {
+                                // sweetalert 彈出確認 成功
+                                Swal.fire({
+                                    title: "產品建置成功",
+                                    showDenyButton: false,
+                                    showCancelButton: false,
+                                    confirmButtonText: "確認",
+                                    denyButtonText: `Don't save`,
+                                    icon: "success",
+                                    allowOutsideClick: false
+                                }).then((result) => {
+                                    /* Read more about isConfirmed, isDenied below */
+                                    if (result.isConfirmed) {
+                                        location.href = "20260511-01.html";
+                                    };
+                                });
+                            } else {
+                                // sweetalert 彈出確認 警告錯誤
+                            }
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        })
+                        .finally(function () {
+                            // always executed
+                        });
+
+                } else {
+                    // alert("商品名稱輸入錯誤! 請在檢查!!");
+                    Swal.fire({
+                        title: "輸入錯誤",
+                        text: "輸入錯誤，請檢查是否符合規則。",
+                        icon: "error",
+                        allowOutsideClick: false,
+                    });
+                    $("#showmsg").html(``);
+                };
+            });
+        });
+    </script>
+</body>
+
+</html>

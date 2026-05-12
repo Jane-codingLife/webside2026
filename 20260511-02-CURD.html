@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的HTML文件</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myCssTools.css">
+    <style>
+        @media screen and (max-width: 990px) {
+            .table-rwd thead {
+                display: none;
+            }
+
+            .table-rwd tbody tr {
+                display: block;
+                margin-top: 10px;
+                border-radius: 10px;
+                border: 3px solid var(--sky-pink05);
+                box-shadow: 2px 2px 2px 2px var(--sky-ui-bg-A);
+            }
+
+            .table-rwd tbody tr td {
+                display: block;
+                font-size: 20px;
+                overflow: hidden;
+            }
+
+            .table-rwd tbody tr td::before {
+                content: attr(data-th) " : ";
+                font-size: 20px;
+                font-weight: 900;
+                color: var(--sky-pink05);
+                display: block;
+                float: left;
+                width: 25%;
+                text-align: right;
+                padding-right: 5px;
+            }
+
+            .table-rwd tbody tr td span {
+                display: block;
+                float: left;
+                width: 75%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 pt-4">
+                <div class="display-4 text-center p-2 text-bg-primary rounded-3">產品列表</div>
+                <table class="mt-3 table shadow-lg table-bordered table-rwd">
+                    <thead class="table-dark text-center">
+                        <tr>
+                            <th>ID</th>
+                            <th>產品名稱</th>
+                            <th>購買數量</th>
+                            <th>置放架位</th>
+                            <th>配料種類</th>
+                            <th>公升數</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pdList">
+                        <!-- <tr>
+                            <td data-th="產品名稱">xxxx</td>
+                            <td data-th="購買數量">xxxx</td>
+                            <td data-th="置放架位">xxxx</td>
+                            <td data-th="配料種類">xxxx</td>
+                            <td data-th="公升數">xxxx</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-4.0.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/axios@1.13.2/dist/axios.min.js"></script>
+    <script>
+        axios.get('http://localhost:3000/products')
+            .then(function (response) {
+                console.log(response);
+                response.data.forEach(function (item) {
+                    const strHtml = `
+                    <tr>
+                        <td data-th="ID">${item.id}</td>
+                        <td data-th="產品名稱">${item.pname}</td>
+                        <td data-th="購買數量">${item.pnum}</td>
+                        <td data-th="置放架位">${item.pshelf}</td>
+                        <td data-th="配料種類">${item.burden}</td>
+                        <td data-th="公升數">${item.ccNum}</td>
+                    </tr>
+                    `
+                    $("#pdList").append(strHtml);
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .finally(function () {
+                // always executed
+            });
+    </script>
+</body>
+
+</html>
