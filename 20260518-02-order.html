@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>練習題：訂單</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myCssTools.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="app" class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="mt-3 form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" v-model="chk01">
+                    <label for="" class="form-check-label">點餐</label>
+                </div>
+                <div class="mt-3 form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" v-model="chk02">
+                    <label for="" class="form-check-label">結帳</label>
+                </div>
+
+                <!-- 點餐：餐點 -->
+                <div v-if="chk01">
+                    <div class="mt-3 form-check">
+                        <input type="checkbox" class="form-check-input" value="豚骨拉麵" v-model="orders">
+                        <label for="" class="form-check-label">豚骨拉麵</label>
+                    </div>
+                    <div class="mt-3 form-check">
+                        <input type="checkbox" class="form-check-input" value="綜合壽司盛合" v-model="orders">
+                        <label for="" class="form-check-label">綜合壽司盛合</label>
+                    </div>
+                    <div class="mt-3 form-check">
+                        <input type="checkbox" class="form-check-input" value="炸蝦天婦羅" v-model="orders">
+                        <label for="" class="form-check-label">炸蝦天婦羅</label>
+                    </div>
+                    <div class="mt-3 form-check">
+                        <input type="checkbox" class="form-check-input" value="日式茶碗蒸" v-model="orders">
+                        <label for="" class="form-check-label">日式茶碗蒸</label>
+                    </div>
+                    <div class="mt-3 form-check">
+                        <input type="checkbox" class="form-check-input" value="靜岡冰綠茶" v-model="orders">
+                        <label for="" class="form-check-label">靜岡冰綠茶</label>
+                    </div>
+                    <div class="mt-3 form-check">
+                        <input type="checkbox" class="form-check-input" value="青醬雞肉義大利麵" v-model="orders">
+                        <label for="" class="form-check-label">青醬雞肉義大利麵</label>
+                    </div>
+                    <div class="mt-3 form-check">
+                        <input type="checkbox" class="form-check-input" value="奶油培根燉飯" v-model="orders">
+                        <label for="" class="form-check-label">奶油培根燉飯</label>
+                    </div>
+                    <div class="mt-3 form-check">
+                        <input type="checkbox" class="form-check-input" value="瑪格麗特披薩" v-model="orders">
+                        <label for="" class="form-check-label">瑪格麗特披薩</label>
+                    </div>
+                    <div class="mt-3 form-check">
+                        <input type="checkbox" class="form-check-input" value="義式蔬菜湯" v-model="orders">
+                        <label for="" class="form-check-label">義式蔬菜湯</label>
+                    </div>
+                    <div class="mt-3 form-check">
+                        <input type="checkbox" class="form-check-input" value="法式焦糖烤布蕾" v-model="orders">
+                        <label for="" class="form-check-label">法式焦糖烤布蕾</label>
+                    </div>
+
+
+                    <hr class="mt-3">
+                    <!-- 付款方式 -->
+                    <span class="d-block">請選擇付款方式:</span>
+                    <div class="mt-3 form-check form-check-inline">
+                        <input type="radio" class="form-check-input" value="現金" v-model="payFor">
+                        <label for="" class="form-check-label">現金</label>
+                    </div>
+                    <div class="mt-3 form-check form-check-inline">
+                        <input type="radio" class="form-check-input" value="刷卡" v-model="payFor">
+                        <label for="" class="form-check-label">刷卡</label>
+                    </div>
+                    <div class="mt-3 form-check form-check-inline">
+                        <input type="radio" class="form-check-input" value="電子支付" v-model="payFor">
+                        <label for="" class="form-check-label">電子支付</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 結帳列出所有餐點 -->
+            <div v-if="chk02">
+                <ul class="list-group mt-3">
+                    <span class="bg-success text-white px-3 py-2">您目前已點餐如下:</ㄋp>
+                        <li class="list-group-item" v-for="(od, index) in orders">
+                            {{ index+1 }} -- {{ od }}
+                        </li>
+                </ul>
+
+                <div class="text-end">
+                    <span class="text-bg-warning text-danger px-2 fw-bolder fs-4">您的付款方式: {{ payFor }}</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="js/jquery-4.0.0.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- ↓↓↓ 讀取 JSON Server 的 axios ↓↓↓ -->
+    <!-- <script src="https://unpkg.com/axios@1.13.2/dist/axios.min.js"></script> -->
+    <!-- ↓↓↓ 框架 Vue ↓↓↓ -->
+    <script src="js/vue.global.js"></script>
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    tit: 'Hello World!',
+                    chk01: false,
+                    chk02: true,
+                    orders: [],
+                    payFor: '現金'
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+
+</html>

@@ -6,7 +6,7 @@
 /* font-family: "Klee One", cursive; */
 
 body {
-  font-family: "Klee One", cursive, "Noto Serif TC", serif;
+  font-family: "Noto Serif TC", serif, "Klee One", cursive;
 }
 
 /****** root 通常用來處理變數 ******/
