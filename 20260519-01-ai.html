@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於我 | Jane & Sami 個人品牌全端系統</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myCssTools.css">
+    <style>
+        /* 基礎背景與字型微調：呼應 Jane & Sami 的神祕、柔和與高端專業感 */
+        body {
+            background-color: var(--brand-primary02); /* 深邃底色 #0c1e36 */
+            color: var(--neutral-bg02);
+            overflow-x: hidden;
+        }
+
+        /* 頂部橫幅區 - 神秘而帶有溫暖漸層 */
+        .intro-header {
+            background: linear-gradient(135deg, var(--sky-deep01b) 0%, var(--sky-blue09b) 100%);
+            border-bottom: 2px solid var(--sky-pink02);
+        }
+
+        .brand-title {
+            font-family: "Noto Serif TC", serif;
+            color: var(--sky-pink02);
+            letter-spacing: 2px;
+        }
+
+        /* 時間軸主要容器 */
+        .timeline-section {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        /* 桌機版中央軸線：使用漸層色呈現溫暖與專業引導感 */
+        .timeline-section::before {
+            position: absolute;
+            content: "";
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--sky-pink01), var(--sky-blue04), var(--sky-pink02));
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* 時間軸節點外圈 */
+        .timeline-section-point {
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        /* 節點圓點核心樣式 */
+        .timeline-section-point::before {
+            position: absolute;
+            content: "";
+            width: 16px;
+            height: 16px;
+            background-color: var(--brand-primary02);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            border-radius: 50%;
+            border: 3px solid var(--sky-pink02);
+            box-shadow: 0 0 10px var(--sky-pink01);
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        /* 滑鼠懸停節點放大效果 */
+        .timeline-section-point:hover::before {
+            width: 22px;
+            height: 22px;
+            border-color: var(--sky-blue05);
+            box-shadow: 0 0 15px var(--sky-blue06);
+        }
+
+        /* 內容文字區塊 */
+        .text-block {
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        .period-tag {
+            font-family: "Noto Serif TC", serif;
+            color: var(--sky-pink02);
+            font-weight: 700;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            font-size: 0.8rem;
+            background-color: rgba(99, 161, 208, 0.15);
+            color: var(--sky-blue03);
+            border: 1px solid var(--sky-blue07b);
+            border-radius: 4px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        /* 響應式佈局設定 */
+        @media screen and (max-width: 768px) {
+            /* 平板尺寸：時間軸線與節點向左對齊 */
+            .timeline-section::before {
+                left: 20px;
+                transform: translateX(0%);
+            }
+
+            .timeline-section-point::before {
+                top: 40px;
+                left: 20px;
+                transform: translate(-50%, -50%);
+            }
+
+            .timeline-section-point:hover::before {
+                width: 18px;
+                height: 18px;
+            }
+
+            /* 修正文字與圖片的間距防止重疊 */
+            .text-block {
+                margin-left: 20px;
+                margin-top: 15px;
+            }
+            
+            .img-box {
+                margin-left: 20px;
+            }
+        }
+
+        @media screen and (max-width: 570px) {
+            /* 手機尺寸：隱藏時間軸線與節點，全面改為上下排列 */
+            .timeline-section::before, 
+            .timeline-section-point::before {
+                display: none;
+            }
+
+            .text-block, 
+            .img-box {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            
+            .timeline-section-point {
+                margin-bottom: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 頂部品牌導言區 -->
+    <div class="intro-header py-5 text-center">
+        <div class="container">
+            <h1 class="brand-title fw-bold mb-3">JANE & SAMI</h1>
+            <p class="fs-5 max-width-700 mx-auto text-muted" style="color: var(--sky-blue03) !important;">
+                融合數據邏輯與人文溫度的全端系統架構師 & 品牌顧問
+            </p>
+        </div>
+    </div>
+
+    <!-- 主時間軸區塊 -->
+    <div class="container py-5">
+        <div class="timeline-section">
+
+            <!-- 第一階段：技術啟蒙與奠基 -->
+            <div class="row align-items-center timeline-section-point">
+                <div class="col-md-6">
+                    <div class="text-block text-md-end">
+                        <div class="h3 period-tag mb-2">2018 - 2020</div>
+                        <h4 class="h5 text-white mb-3">學術與核心技術淬煉</h4>
+                        <p class="fs-6 text-secondary" style="color: rgba(240,240,240,0.8) !important;">
+                            深耕資訊科技領域，研習資料庫設計與全端邏輯。熟練掌握 PHP、MySQL 架構，並探索 Python 的自動化處理，同時接受專業的介面美學訓練，開啟工程與視覺感性交會的契機。
+                        </p>
+                        <div class="mt-3">
+                            <span class="tech-badge">PHP & MySQL</span>
+                            <span class="tech-badge">Python 自動化</span>
+                            <span class="tech-badge">資料結構</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="img-box bg-cover rounded shadow" style="background-image: url('img/map_001.avif'); height: 280px;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第二階段：就業洗禮與實戰累積 -->
+            <div class="row align-items-center flex-md-row-reverse timeline-section-point">
+                <div class="col-md-6">
+                    <div class="text-block text-md-start">
+                        <div class="h3 period-tag mb-2">2020 - 2022</div>
+                        <h4 class="h5 text-white mb-3">全端工程與跨平台 APP 研發實戰</h4>
+                        <p class="fs-6 text-secondary" style="color: rgba(240,240,240,0.8) !important;">
+                            進入產業界擔任全端開發工程師，主導中大型系統前端介面與 API 設計。使用 Figma 建構系統原型與高互動的原型鏈結（Prototype），並將跨平台 App 開發實務導入專案，成功優化了使用者體驗。
+                        </p>
+                        <div class="mt-3">
+                            <span class="tech-badge">Figma Prototyping</span>
+                            <span class="tech-badge">API 開發整合</span>
+                            <span class="tech-badge">跨平台 App 研發</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="img-box bg-cover rounded shadow" style="background-image: url('img/map_002.avif'); height: 280px;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第三階段：Jane & Sami 品牌全端系統建置 -->
+            <div class="row align-items-center timeline-section-point">
+                <div class="col-md-6">
+                    <div class="text-block text-md-end">
+                        <div class="h3 period-tag mb-2">2022 - 2024</div>
+                        <h4 class="h5 text-white mb-3">Jane & Sami 專屬全端系統開發</h4>
+                        <p class="fs-6 text-secondary" style="color: rgba(240,240,240,0.8) !important;">
+                            作為品牌系統技術負責人，獨立開發「Jane & Sami」個人品牌全端系統。利用 Python Tkinter 打造高效率後台資料登錄介面，並以 PyInstaller 進行應用程式的安全封裝（.exe），將數理模型與玄學資料庫進行底層的高效整合。
+                        </p>
+                        <div class="mt-3">
+                            <span class="tech-badge">Python Tkinter GUI</span>
+                            <span class="tech-badge">PyInstaller 封裝</span>
+                            <span class="tech-badge">自訂資料庫 Schema</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="img-box bg-cover rounded shadow" style="background-image: url('img/map_003.avif'); height: 280px;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第四階段：商務決策顧問 -->
+            <div class="row align-items-center flex-md-row-reverse timeline-section-point">
+                <div class="col-md-6">
+                    <div class="text-block text-md-start">
+                        <div class="h3 period-tag mb-2">2024 - 2026</div>
+                        <h4 class="h5 text-white mb-3">企業數位諮商與品牌決策顧問</h4>
+                        <p class="fs-6 text-secondary" style="color: rgba(240,240,240,0.8) !important;">
+                            將技術能量轉化為溫暖且兼具數據理性的引導工具。拒絕單純宿命論，將特質分析演算法與職場心理諮商整合，提供企業與個人精準的決策諮詢。以全方位數位品牌之姿，在不確定性中為客戶提供明晰的指引。
+                        </p>
+                        <div class="mt-3">
+                            <span class="tech-badge">決策分析演算法</span>
+                            <span class="tech-badge">數位品牌策略</span>
+                            <span class="tech-badge">心理諮商引導</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="img-box bg-cover rounded shadow" style="background-image: url('img/map_004.avif'); height: 280px;">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
