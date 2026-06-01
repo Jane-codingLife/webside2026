@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuejs 練習</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="app" class="container">
+        <div class="row justify-content-center">
+            <div class="display-5 text-center text-bg-success my-3 py-3 rounded-2 fw-bolder">{{ tit }}</div>
+            <div class="col-10">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" v-model="isOrder">
+                    <label for="" class="form-check-label">點餐</label>
+                </div>
+                <hr>
+                <div v-if="isOrder">
+                    <div class="bg-warning pb-2">
+                        <div class="h5 text-center text-bg-primary py-2 rounded-2">=== 套餐 NENU ===</div>
+                        <!-- v-bind: 可以省略 v-bind 直接使用 : -->
+                        <div class="form-check offset-1" v-for="item in menu">
+                            <input type="checkbox" class="form-check-input" :id="item.id" :value="item"
+                                v-model="shopCart">
+                            <label :for="item.id" class="form-check-label">
+                                {{ item.name }} -- {{ item.price }} 元
+                            </label>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="h3">付款方式</div>
+                    <div class="mb-3">
+                        <select name="" id="" class="form-select" v-model="payFor">
+                            <option value="" class="text-center" disabled selected>=== 選擇一種付款方式 ===</option>
+                            <option value="現金">現金</option>
+                            <option value="信用卡">信用卡</option>
+                            <option value="LINE PAY">LINE PAY</option>
+                            <option value="悠遊Pay">悠遊Pay</option>
+                        </select>
+                    </div>
+
+                    <div class="h3">訂單資料</div>
+                    <div class="mb-2 input-group">
+                        <span class="input-group-text">訂餐人姓名</span>
+                        <input type="text" class="form-control" id="orderName" v-model="orderName"
+                            placeholder="請輸入 2-10 字" :class="{
+                                'is-valid':odNameFlag, 
+                                'is-invalid':odNameFlag === false
+                            }">
+                        <div class="valid-feedback">格式正確</div>
+                        <div class="invalid-feedback">請輸入 2-10 字</div>
+                    </div>
+                    <div class="mb-2 input-group">
+                        <span class="input-group-text">訂餐人電話</span>
+                        <span class="input-group-text">09</span>
+                        <input type="text" class="form-control" id="orderPhone" v-model="orderPhone" placeholder="電話後八碼"
+                            :class="{
+                                'is-valid':odPhoneFlag, 
+                                'is-invalid':odPhoneFlag === false
+                            }">
+                        <div class="valid-feedback">格式正確</div>
+                        <div class="invalid-feedback">請輸入數字，電話後八碼</div>
+                    </div>
+                    <div class="mb-2 input-group">
+                        <span class="input-group-text">用餐人數</span>
+                        <input type="number" class="form-control form-control-lg text-center" min="1" max="30"
+                            id="orderPerson" v-model="orderPerson" placeholder="1 ~ 30 人"
+                            :class="{'is-invalid':odPersonFlag === false}">
+                        <div class="invalid-feedback">請輸入數字 1 ~ 30</div>
+                    </div>
+                    <div class="mb-2 input-group">
+                        <span class="input-group-text">備註</span>
+                        <textarea class="form-control" rows="3" placeholder="不加辣、需要餐具..." id="orderMemo"
+                            v-model="orderMemo" :class="{'is-invalid':odMemoFlag === false}"></textarea>
+                        <div class="invalid-feedback">請輸入 30 字內</div>
+                    </div>
+                    <div class="text-secondary text-end">備註目前字數: {{ orderMemo.length }}/30</div>
+
+                    <div class="h3">取餐方式</div>
+                    <div class="form-check form-check-inline">
+                        <input id="pickUp01" type="radio" class="form-check-input" value="內用" v-model="pickUp">
+                        <label for="pickUp01" class="form-check-label">內用</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input id="pickUp02" type="radio" class="form-check-input" value="到店取餐" v-model="pickUp">
+                        <label for="pickUp02" class="form-check-label">到店取餐</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input id="pickUp03" type="radio" class="form-check-input" value="外送到府" v-model="pickUp">
+                        <label for="pickUp03" class="form-check-label">外送到府</label>
+                    </div>
+
+                    <hr>
+
+                    <div class="alert alert-info">
+                        <div class="h5 text-bg-success py-2 text-center rounded-2">購買清單</div>
+                        <div class="mb-2">
+                            目前已點選 <span class="text-danger fw-bold">{{ countOrder }}</span> 個餐點
+                        </div>
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between" v-for="item in shopCart">
+                                <span>{{ item.name }}</span>
+                                <span>$ {{ item.price }}</span>
+                            </li>
+                        </ul>
+                        <div class="mt-3 d-flex justify-content-between">
+                            <span class="fw-bold">支付方式：
+                                <span v-if="payFor" class="text-primary">{{ payFor }}</span>
+                                <span v-else class="text-danger">請選擇付款方式</span>
+                            </span>
+                            <span class="h6 fw-bold">總金額：{{ totalPrice }}元</span>
+                        </div>
+                        <div class="fw-bold">
+                            取餐方式：
+                            <span v-if="pickUp" class="text-success">{{ pickUp }}</span>
+                            <span v-else class="text-danger">請選擇取餐方式</span>
+                        </div>
+
+                        <hr>
+
+                        <div class="mb-2 text-center text-bg-primary py-2 rounded-2">==== 訂購資訊 ====</div>
+                        <div v-if="odNameFlag && odPhoneFlag && odPersonFlag">
+                            <div class="d-flex justify-content-between">
+                                <span>
+                                    訂購人姓名：<span class="text-primary">{{ orderName }}</span>
+                                </span>
+                                <span>
+                                    用餐人數：<span class="text-primary">{{ orderPerson }}</span>人
+                                </span>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <span>
+                                    訂購人電話：<span class="text-primary">09{{ orderPhone }}</span>
+                                </span>
+                                <span>
+                                    備註：<span class="text-primary">{{ orderMemo }}</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- v-on: 的縮寫 @ -->
+                        <span id="submitOrder" class="d-flex justify-content-end">
+                            <button class="btn btn-success" :disabled="!isFormValid" @click="submitOrder">確認訂餐</button>
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- ↓↓↓ 讀取 JSON Server 的 axios ↓↓↓ -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.13.2/dist/axios.min.js"></script>
+    <!-- ↓↓↓ 框架 Vue ↓↓↓ -->
+    <script src="js/vue.global.js"></script>
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    tit: "Vuejs 練習-點餐",
+                    isOrder: true,
+                    menu: [
+                        {
+                            id: 1,
+                            name: "日式套餐",
+                            price: 150
+                        },
+                        {
+                            id: 2,
+                            name: "韓式泡菜豆腐鍋套餐",
+                            price: 180
+                        },
+                        {
+                            id: 3,
+                            name: "美式雙層牛肉堡套餐",
+                            price: 220
+                        },
+                        {
+                            id: 4,
+                            name: "義式青醬雞肉義大利麵套餐",
+                            price: 195
+                        },
+                        {
+                            id: 5,
+                            name: "泰式椒麻雞飯套餐",
+                            price: 165
+                        },
+                        {
+                            id: 6,
+                            name: "台式阿嬤滷肉飯特餐",
+                            price: 120
+                        },
+                        {
+                            id: 7,
+                            name: "港式油雞燒臘雙拼套餐",
+                            price: 170
+                        },
+                        {
+                            id: 8,
+                            name: "印度紅咖哩燉羊肉套餐",
+                            price: 240
+                        },
+                        {
+                            id: 9,
+                            name: "越式清燉牛肉河粉套餐",
+                            price: 155
+                        },
+                        {
+                            id: 10,
+                            name: "法式紅酒燉牛肉套餐",
+                            price: 280
+                        }
+                    ],
+
+                    // 訂餐資訊：餐點、付款、取餐
+                    shopCart: [],
+                    payFor: "",
+                    pickUp: "",
+
+                    // 訂單人資料：姓名、電話、人數、備註
+                    orderName: "",
+                    orderPhone: "",
+                    orderPerson: 1,
+                    orderMemo: "",
+
+                    // 驗證狀態(Flag)
+                    odNameFlag: null,
+                    odPhoneFlag: null,
+                    odPersonFlag: true,
+                    odMemoFlag: null,
+                }
+            },
+            // computed 即時運算用，只要有觸發就會執行
+            computed: {
+                totalPrice() {
+                    let total = 0;
+
+                    // this => Vue.createApp 整個元件
+                    this.shopCart.forEach(function (item) {
+                        total += item.price;
+                    });
+
+                    return total;
+                },
+                countOrder() {
+                    return this.shopCart.length;
+                },
+                isFormValid() {
+                    // 判斷表單是否完整可以被送出 => disabled 控制
+                    if (this.odNameFlag === true &&
+                        this.odPhoneFlag === true &&
+                        this.odPersonFlag === true &&
+                        this.shopCart.length > 0 &&
+                        this.payFor !== "" &&
+                        this.pickUp !== ""
+                    ) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            },
+            // 監視/監聽項目是否有異動
+            watch: {
+                orderName(newValue) {
+                    // console.log(newValue);
+                    if (newValue.length === 0) {
+                        this.odNameFlag = null;
+                    } else if (newValue.length > 1 && newValue.length < 11) {
+                        this.odNameFlag = true;
+                    } else {
+                        this.odNameFlag = false;
+                    }
+                },
+                orderPhone(newValue) {
+                    if (newValue.length === 0) {
+                        this.odPhoneFlag = null;
+                    } else if (Number(newValue) && newValue.length === 8) {
+                        this.odPhoneFlag = true;
+                    } else {
+                        this.odPhoneFlag = false;
+                    }
+                },
+                orderPerson(newValue) {
+                    if (newValue >= 1 && newValue <= 30) {
+                        this.odPersonFlag = true;
+                    } else {
+                        this.odPersonFlag = false;
+                    }
+                },
+                orderMemo(newValue) {
+                    // console.log(newValue);
+                    if (newValue.length === 0) {
+                        this.odMemoFlag = null;
+                    } else if (newValue.length > 0 && newValue.length < 31) {
+                        this.odMemoFlag = true;
+                    } else {
+                        this.odMemoFlag = false;
+                    }
+                },
+            },
+            // methods 著重在行為處理。function
+            methods: {
+                submitOrder() {
+                    const orderData = {
+                        "orderName": this.orderName,
+                        "orderPhone": "09" + this.orderPhone,
+                        "orderPerson": this.orderPerson,
+                        "orderMemo": this.orderMemo,
+                        "shopCart": this.shopCart,
+                        "payFor": this.payFor,
+                        "pickUp": this.pickUp,
+                        "mealCount": this.countOrder,
+                        "totalPrice": this.totalPrice
+                    };
+                    console.log(orderData);
+                    // 傳送到 json server API 執行新增 axios
+                    axios.post('http://localhost:3000/orders', orderData)
+                        .then(function (response) {
+                            console.log(response);
+                            if (response.status === 201) {
+                                Swal.fire({
+                                    title: "確認送出訂單？",
+                                    showDenyButton: false,
+                                    showCancelButton: true,
+                                    confirmButtonText: "送出",
+                                    denyButtonText: `Don't save`,
+                                    cancelButtonText: "取消",
+                                    icon: "question",
+                                    allowOutsideClick: false
+                                }).then((result) => {
+                                    /* Read more about isConfirmed, isDenied below */
+                                    if (result.isConfirmed) {
+                                        Swal.fire({
+                                            title: "訂單已送出！",
+                                            showDenyButton: false,
+                                            showCancelButton: false,
+                                            confirmButtonText: "確認",
+                                            icon: "success",
+                                            allowOutsideClick: false
+                                        }).then((result) => {
+                                            /* Read more about isConfirmed, isDenied below */
+                                            if (result.isConfirmed) {
+                                                location.href = "20260601-01.html"
+                                            };
+                                        });
+                                    };
+                                });
+                            }
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        })
+                        .finally(function () {
+                            // always executed
+                        });
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

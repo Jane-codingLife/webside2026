@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>260601 訂單卡片列表</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/20260601-03-ai.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="app" class="container">
+        <div class="row">
+            <div class="display-4 text-center fw-bolder titel-bg">{{title}}</div>
+            <div class="col-lg-6 col-xl-4 mt-3" v-for="item in orders">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between align-items-center bg-info">
+                        <div class="fs-5">訂單編號：#{{item.id}}</div>
+                        <span class="badge text-bg-warning">待處理</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="fs-5 fw-bold">{{item.orderName}}</div>
+                            <div class="text-secondary">用餐人數: {{item.orderPerson}}人</div>
+                        </div>
+                        <div class="border-top pt-3">
+                            <div class="d-flex justify-content-between">
+                                <span class="text-secondary">取餐方式</span>
+                                <span class="fw-bold">{{item.pickUp}}</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-secondary">付款方式</span>
+                                <span class="fw-bold">{{item.payFor}}</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-secondary">餐點數量</span>
+                                <span class="fw-bold text-primary">共 {{item.mealCount}} 項</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-secondary">備註</span>
+                                <span class="fw-bold">{{item.orderMemo}}</span>
+                            </div>
+
+                            <!-- 餐點明細 -->
+                            <div class="border rounded-3 p-3 detail-tit" v-if="viewDetailId === item.id">
+                                <div class="fw-bolder" style="font-size: 14px;">餐點明細</div>
+                                <div class="d-flex justify-content-between mt-1 border-bottom"
+                                    v-for="meal in item.shopCart">
+                                    <span class="text-secondary">{{meal.name}}</span>
+                                    <span class="fw-bold text-secondary">{{meal.price}} 元</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="mb-3 d-flex justify-content-between align-items-center">
+                            <div class="fs-5 fw-bold">總計金額</div>
+                            <span class="text-danger fw-bolder fs-4">NT$ {{item.totalPrice}} 元</span>
+                        </div>
+                        <div class="d-flex gap-3">
+                            <button class="btn flex-fill" @click="viewDetail(item.id)"
+                                :class="{'btn-primary':viewDetailId === item.id, 'btn-outline-primary':viewDetailId === null || viewDetailId !== item.id}">
+                                <span v-if="viewDetailId === item.id">收合明細</span>
+                                <span v-else>展開明細</span>
+                            </button>
+                            <button class="btn btn-success flex-fill">修改訂單</button>
+                            <button class="btn btn-outline-danger flex-fill" @click="deleOrder(item.id)">刪除訂單</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.13.2/dist/axios.min.js"></script>
+    <script src="js/vue.global.js"></script>
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    title: "訂單列表",
+                    orders: [], // 從 json-server 取得所有的訂單
+                    viewDetailId: null, // 紀錄要開啟的 order-id
+                }
+            },
+            methods: {
+                getOrders() {
+                    const vm = this; // 這個 this 指全部的東西
+                    axios.get('http://localhost:3000/orders')
+                        .then(function (response) {
+                            console.log(response);
+                            vm.orders = response.data;
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        })
+                        .finally(function () {
+                            // always executed
+                        });
+                },
+                viewDetail(id) {
+                    if (this.viewDetailId === id) {
+                        this.viewDetailId = null;
+                    } else {
+                        this.viewDetailId = id;
+                    }
+                },
+                deleOrder(id) {
+                    Swal.fire({
+                        title: "是否確定刪除?",
+                        showDenyButton: false,
+                        showCancelButton: true,
+                        confirmButtonText: "確定",
+                        cancelButtonText: "取消",
+                        icon: "warning",
+                        allowOutsideClick: false
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire({
+                                title: "刪除後將無法恢復！",
+                                showDenyButton: false,
+                                showCancelButton: true,
+                                confirmButtonText: "確定",
+                                cancelButtonText: "取消",
+                                icon: "info",
+                                allowOutsideClick: false
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    axios.delete(`http://localhost:3000/orders/${id}`)
+                                        .then(function (response) {
+                                            console.log(response);
+                                            vm.orders = response.data;
+                                        })
+                                        .catch(function (error) {
+                                            console.log(error);
+                                        })
+                                        .finally(function () {
+                                            // always executed
+                                        });
+                                    location.href = "20260601-02.html";
+                                };
+                            });
+                        };
+                    });
+
+                }
+            },
+            // mounted：在網頁載入時，會先執行的功能 (Ex.取得相關資料)
+            mounted() {
+                this.getOrders();
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

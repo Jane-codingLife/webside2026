@@ -1,0 +1,150 @@
+/* 異國風味館主題核心配色與樣式 */
+:root {
+    --flavor-dark: #2c1d11;
+    /* 深可可/香料主色 */
+    --flavor-gold: #c5a880;
+    /* 香檳金/復古奢華調 */
+    --flavor-light: #fdfbf7;
+    /* 柔和暖白底色 */
+    --flavor-accent: #a94442;
+    /* 質感胭脂紅 (用於危險/警示) */
+    --flavor-success: #4a6741;
+    /* 羅勒綠 (用於成功/修改) */
+}
+
+body {
+    background-color: #f4ede2;
+    font-family: 'Noto Serif TC', 'PingFang TC', serif;
+    color: var(--flavor-dark);
+    padding-top: 2rem;
+}
+
+.titel-bg {
+    background-color: var(--flavor-gold);
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 2px 4px 2px var(--flavor-dark);
+    margin-bottom: 8px;
+}
+
+/* 卡片整體美化 */
+.card {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(44, 29, 17, 0.08);
+    background-color: var(--flavor-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(44, 29, 17, 0.12);
+}
+
+/* 標頭改為深色異國沉穩風 */
+.card-header.bg-info {
+    background-color: var(--flavor-dark) !important;
+    color: var(--flavor-gold) !important;
+    border-bottom: 2px solid var(--flavor-gold);
+    padding: 1.25rem 1.5rem;
+}
+
+/* 狀態標籤微調 */
+.badge.text-bg-warning {
+    background-color: var(--flavor-gold) !important;
+    color: var(--flavor-dark) !important;
+    letter-spacing: 1px;
+    padding: 0.5em 0.8em;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+/* 內容區間距與線條優化 */
+.card-body {
+    padding: 1.5rem;
+}
+
+.border-top {
+    border-top: 1px dashed rgba(197, 168, 128, 0.4) !important;
+}
+
+/* 項目明細字體細節 */
+.card-body .detail-tit {
+    color: var(--flavor-dark);
+}
+
+.card-body .d-flex {
+    margin-bottom: 0.75rem;
+}
+
+.card-body .d-flex:last-child {
+    margin-bottom: 0;
+}
+
+.text-secondary {
+    color: #8c7e6e !important;
+}
+
+.text-primary {
+    color: var(--flavor-gold) !important;
+}
+
+/* 頁尾與金額 */
+.card-footer {
+    background-color: rgba(197, 168, 128, 0.1);
+    border-top: 1px solid rgba(197, 168, 128, 0.2);
+    padding: 1.5rem;
+}
+
+.text-danger {
+    color: var(--flavor-accent) !important;
+}
+
+/* 按鈕風格全面翻新 (維持原本的 class 結構) */
+.btn-outline-primary {
+    color: var(--flavor-dark);
+    border-color: var(--flavor-gold);
+    border-width: 1.5px;
+}
+
+.btn-primary {
+    background-color: var(--flavor-dark);
+    border-color: var(--flavor-dark);
+    color: var(--flavor-light);
+}
+
+.btn-outline-primary:hover, .btn-primary:hover {
+    background-color: var(--flavor-gold);
+    border-color: var(--flavor-gold);
+    color: var(--flavor-dark);
+}
+
+.btn-success {
+    background-color: var(--flavor-success);
+    border-color: var(--flavor-success);
+}
+
+.btn-success:hover {
+    background-color: #3b5234;
+    border-color: #3b5234;
+}
+
+.btn-outline-danger {
+    color: var(--flavor-accent);
+    border-color: var(--flavor-accent);
+}
+
+.btn-outline-danger:hover {
+    background-color: var(--flavor-accent);
+    border-color: var(--flavor-accent);
+    color: #fff;
+}
+
+.btn {
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
