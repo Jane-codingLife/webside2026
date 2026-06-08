@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>260601 訂單卡片列表</title>
+    <title>260602 顯示修改餐點</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/20260601-03-ai.css">
     <style>
@@ -14,13 +14,55 @@
 
 <body>
     <div id="app" class="container">
+        <div class="row mb-3">
+            <div class="col-12 mb-3 text-end">
+                <span class="h5 py-2 rounded-3 fw-bold">總數：</span>
+                <span class="h1 fw-bolder">{{ totalCount }}</span>
+                <span>筆</span>
+            </div>
+            <div class="col-3">
+                <div class="card rounded-2">
+                    <div class="card-body text-center">
+                        <div class="h5 text-bg-warning py-2 rounded-3 fw-bold">待處理</div>
+                        <span class="h1 fw-bolder">{{ waitCount }}</span>筆
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card rounded-2">
+                    <div class="card-body text-center">
+                        <div class="h5 text-bg-primary py-2 rounded-3 fw-bold">製作中</div>
+                        <span class="h1 fw-bolder">{{ prepareCount }}</span>筆
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card rounded-2">
+                    <div class="card-body text-center">
+                        <div class="h5 text-bg-success py-2 rounded-3 fw-bold">已完成</div>
+                        <span class="h1 fw-bolder">{{ finishCount }}</span>筆
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card rounded-2">
+                    <div class="card-body text-center">
+                        <div class="h5 text-bg-danger py-2 rounded-3 fw-bold">已取消</div>
+                        <span class="h1 fw-bolder">{{ cancelCount }}</span>筆
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="display-4 text-center fw-bolder titel-bg">{{title}}</div>
             <div class="col-lg-6 col-xl-4 mt-3" v-for="item in orders">
                 <div class="card h-100">
                     <div class="card-header d-flex justify-content-between align-items-center bg-info">
                         <div class="fs-5">訂單編號：#{{item.id}}</div>
-                        <span class="badge text-bg-warning">待處理</span>
+                        <span class="badge"
+                            :class="{'text-bg-warning':item.state === '待處理', 'text-bg-primary':item.state === '製作中', 'text-bg-success':item.state === '已完成', 'text-bg-danger':item.state === '已取消'}">
+                            {{item.state}}
+                        </span>
                     </div>
                     <div class="card-body">
                         <div class="mb-3">
@@ -69,7 +111,13 @@
                                 <span v-else>展開明細</span>
                             </button>
                             <button class="btn btn-success flex-fill" @click="showEditModel(item)">修改訂單</button>
-                            <button class="btn btn-outline-danger flex-fill" @click="deleOrder(item.id)">刪除訂單</button>
+                            <button class="btn btn-outline-danger flex-fill" @click="deleteOrder(item.id)"
+                                v-if="item.state === '已取消' || item.state === '已完成'">
+                                刪除訂單
+                            </button>
+                            <button class="btn btn-outline-danger flex-fill" @click="cancelOrder(item.id)" v-else>
+                                取消訂單
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -85,12 +133,24 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title fw-bold fs-2">修改訂單 #{{ editOrder.id }}</h5>
+                        <h5 class="modal-title fw-bold fs-2"><span class="badge text-bg-info">修改訂單</span> #{{
+                            editOrder.id }}</h5>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
+                        <!-- 訂單狀態選單 -->
+                        <div class="mb-3">
+                            <select class="form-select form-select-lg text-bg-secondary text-white fw-bolder"
+                                v-model="editOrder.state">
+                                <option value="待處理">待處理</option>
+                                <option value="製作中">製作中</option>
+                                <option value="已完成">已完成</option>
+                                <option value="已取消" disabled>已取消</option>
+                            </select>
+                        </div>
+
                         <div class="h4">訂單資料</div>
                         <div class="mb-2 input-group">
                             <span class="input-group-text">訂餐人姓名</span>
@@ -104,7 +164,7 @@
                             <span class="input-group-text">用餐人數</span>
                             <input type="number" class="form-control form-control-lg text-center" min="1" max="30"
                                 v-model="editOrder.orderPerson" placeholder="1 ~ 30 人"
-                                :class="{'is-invalid':odPersonFlag === false}">
+                                :class="{'is-invalid':odPersonFlag === false}" :disabled="editOrder.state === '已完成'">
                             <div class="invalid-feedback">請輸入數字 1 ~ 30</div>
                         </div>
                         <div class="mb-2 input-group">
@@ -118,8 +178,8 @@
 
                         <div class="h4">付款方式</div>
                         <div class="mb-3">
-                            <select name="" id="" class="form-select" v-model="editOrder.payFor">
-                                <option value="" class="text-center" disabled selected>=== 選擇一種付款方式 ===</option>
+                            <select class="form-select" v-model="editOrder.payFor"
+                                :disabled="editOrder.state === '已完成'">
                                 <option value="現金">現金</option>
                                 <option value="信用卡">信用卡</option>
                                 <option value="LINE PAY">LINE PAY</option>
@@ -130,17 +190,17 @@
                         <div class="h4">取餐方式</div>
                         <div class="form-check form-check-inline">
                             <input id="pickUp01" type="radio" class="form-check-input" value="內用"
-                                v-model="editOrder.pickUp">
+                                v-model="editOrder.pickUp" :disabled="editOrder.state === '已完成'">
                             <label for="pickUp01" class="form-check-label">內用</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input id="pickUp02" type="radio" class="form-check-input" value="到店取餐"
-                                v-model="editOrder.pickUp">
+                                v-model="editOrder.pickUp" :disabled="editOrder.state === '已完成'">
                             <label for="pickUp02" class="form-check-label">到店取餐</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input id="pickUp03" type="radio" class="form-check-input" value="外送到府"
-                                v-model="editOrder.pickUp">
+                                v-model="editOrder.pickUp" :disabled="editOrder.state === '已完成'">
                             <label for="pickUp03" class="form-check-label">外送到府</label>
                         </div>
                     </div>
@@ -166,13 +226,15 @@
         Vue.createApp({
             data() {
                 return {
-                    title: "訂單列表",
+                    title: "訂單列表 v2.0",
                     orders: [], // 從 json-server 取得所有的訂單
                     viewDetailId: null, // 紀錄要開啟的 order-id
+
                     // 紀錄目前正在修改的訂單
                     editOrder: {},
                     odPersonFlag: true,
                     odMemoFlag: true,
+
                 }
             },
             methods: {
@@ -224,6 +286,7 @@
                         orderMemo: vm.editOrder.orderMemo,
                         payFor: vm.editOrder.payFor,
                         pickUp: vm.editOrder.pickUp,
+                        state: vm.editOrder.state
                     };
 
                     axios.patch('http://localhost:3000/orders/' + vm.editOrder.id, updateData)
@@ -257,11 +320,52 @@
                             // always executed
                         });
                 },
-                // 刪除單筆訂單
-                deleOrder(id) {
+                // 取消訂單
+                cancelOrder(id) {
                     const vm = this;
                     Swal.fire({
-                        title: "是否確定刪除?",
+                        title: "是否確定取消此單?",
+                        showDenyButton: false,
+                        showCancelButton: true,
+                        confirmButtonText: "確定",
+                        cancelButtonText: "取消",
+                        icon: "warning",
+                        allowOutsideClick: false
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            axios.patch(`http://localhost:3000/orders/${id}`, { state: "已取消" })
+                                .then(function (response) {
+                                    console.log(response);
+                                    Swal.fire({
+                                        title: "取消成功",
+                                        showDenyButton: false,
+                                        showCancelButton: false,
+                                        confirmButtonText: "確定",
+                                        cancelButtonText: "取消",
+                                        icon: "success",
+                                        allowOutsideClick: false
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            // 重新讀取資料
+                                            vm.getOrders();
+                                        };
+                                    });
+                                })
+                                .catch(function (error) {
+                                    console.log(error);
+                                })
+                                .finally(function () {
+                                    // always executed
+                                });
+                        };
+                    });
+                },
+                // 刪除訂單
+                deleteOrder(id) {
+
+                    const vm = this;
+                    Swal.fire({
+                        title: "是否確定刪除此單?",
                         showDenyButton: false,
                         showCancelButton: true,
                         confirmButtonText: "確定",
@@ -271,21 +375,18 @@
                     }).then((result) => {
                         if (result.isConfirmed) {
                             Swal.fire({
-                                title: "刪除後將無法恢復！",
+                                title: "刪除後將無法復原，是否確定?",
                                 showDenyButton: false,
                                 showCancelButton: true,
                                 confirmButtonText: "確定",
                                 cancelButtonText: "取消",
-                                icon: "info",
+                                icon: "warning",
                                 allowOutsideClick: false
                             }).then((result) => {
                                 if (result.isConfirmed) {
                                     axios.delete(`http://localhost:3000/orders/${id}`)
                                         .then(function (response) {
                                             console.log(response);
-                                            // 重新讀取資料
-                                            // location.href = "20260601-02.html";
-                                            vm.getOrders();
                                         })
                                         .catch(function (error) {
                                             console.log(error);
@@ -293,11 +394,25 @@
                                         .finally(function () {
                                             // always executed
                                         });
+                                    Swal.fire({
+                                        title: "刪除成功",
+                                        showDenyButton: false,
+                                        showCancelButton: false,
+                                        confirmButtonText: "確定",
+                                        cancelButtonText: "取消",
+                                        icon: "success",
+                                        allowOutsideClick: false
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            // 重新讀取資料
+                                            vm.getOrders();
+                                        };
+                                    });
                                 };
                             });
                         };
                     });
-                }
+                },
             },
             // mounted：在網頁載入時，會先執行的功能 (Ex.取得相關資料)
             mounted() {
@@ -336,6 +451,49 @@
                     } else {
                         return false;
                     }
+                },
+                totalCount() {
+                    return this.orders.length;
+                },
+                waitCount() {
+                    let i = 0;
+                    this.orders.forEach(element => {
+                        console.log(element.state);
+                        if (element.state === '待處理') {
+                            i += 1;
+                        }
+                    });
+                    return i;
+                },
+                prepareCount() {
+                    let i = 0;
+                    this.orders.forEach(element => {
+                        console.log(element.state);
+                        if (element.state === '製作中') {
+                            i += 1;
+                        }
+                    });
+                    return i;
+                },
+                finishCount() {
+                    let i = 0;
+                    this.orders.forEach(element => {
+                        console.log(element.state);
+                        if (element.state === '已完成') {
+                            i += 1;
+                        }
+                    });
+                    return i;
+                },
+                cancelCount() {
+                    let i = 0;
+                    this.orders.forEach(element => {
+                        console.log(element.state);
+                        if (element.state === '已取消') {
+                            i += 1;
+                        }
+                    });
+                    return i;
                 }
             }
         }).mount("#app");
